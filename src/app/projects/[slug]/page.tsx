@@ -1,5 +1,5 @@
 // app/projects/[slug]/page.tsx
-import { projects, Project } from "@/lib/data"; // Impor data dan tipe proyek
+import { projects } from "@/lib/data"; // Impor data dan tipe proyek
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react"; // Impor ikon untuk tautan eksternal
@@ -27,7 +27,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${project.title} | Proyek Saya`,
       description: project.description,
-      images: [project.image], // Gunakan thumbnail proyek sebagai og:image
+      images: [project.image],
     },
   };
 }
@@ -76,11 +76,12 @@ export default function ProjectDetailPage({
       >
         &larr; Kembali ke Proyek
       </Link>
-
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">
-        {project.title}
-      </h1>
-      <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+      <div className="flex">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">
+          {project.title}
+        </h1>
+      </div>
+      <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 text-justify">
         {project.description}
       </p>
 
@@ -102,7 +103,7 @@ export default function ProjectDetailPage({
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Gambaran Umum Proyek
           </h2>
-          <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+          <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-4 text-justify">
             {project.longDescription.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
@@ -130,7 +131,7 @@ export default function ProjectDetailPage({
                 {project.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full dark:bg-blue-800 dark:text-blue-100"
+                    className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-lg dark:bg-blue-800 dark:text-blue-100"
                   >
                     {tag}
                   </span>
@@ -163,17 +164,17 @@ export default function ProjectDetailPage({
         </div>
       </div>
 
-      {/* Galeri Gambar (Opsional) */}
+      {/* Galeri Gambar  */}
       {project.images && project.images.length > 0 && (
         <div className="mt-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
             Galeri Proyek
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
             {project.images.map((imgSrc, index) => (
               <div
                 key={index}
-                className="relative w-full h-64 sm:h-80 rounded-lg overflow-hidden shadow-md"
+                className="relative w-full h-28 sm:h-52 rounded-lg overflow-hidden shadow-md"
               >
                 <Image
                   src={imgSrc}
