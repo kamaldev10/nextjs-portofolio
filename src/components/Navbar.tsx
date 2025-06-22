@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 // Import ikon yang dibutuhkan dari lucide-react
-import { Home, Folder, Mail } from "lucide-react"; // Perhatikan 'lucide-react'
+import { Home, Folder, Mail, LetterTextIcon } from "lucide-react"; // Perhatikan 'lucide-react'
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
@@ -15,21 +15,17 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", icon: Home, href: "/" }, // Menggunakan Home dari lucide-react
     { name: "Projects", icon: Folder, href: "/projects" }, // Menggunakan Folder
+    { name: "Certificates", icon: LetterTextIcon, href: "/certificates" },
     { name: "Contact", icon: Mail, href: "/contact" }, // Menggunakan Mail
   ];
 
   return (
     <nav className="bg-white shadow-sm dark:bg-gray-800 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-2">
         <div className="flex justify-between h-16 items-center">
           {/* Logo / Nama */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link
-              href="/"
-              className="text-2xl font-bold text-indigo-600 dark:text-indigo-400"
-            >
-              My Web Portfolio
-            </Link>
+          <div className=" flex items-center">
+            <ThemeToggle />
           </div>
 
           {/* Navigasi Desktop */}
@@ -51,19 +47,16 @@ const Navbar = () => {
                     }
                   `}
                 >
-                  <IconComponent className="h-5 w-5" /> {/* Render ikon */}
+                  <IconComponent className="h-5 w-5" />
                   <span>{link.name}</span>
                 </Link>
               );
             })}
-            <ThemeToggle /> {/* Tambahkan tombol tema di sini */}
           </div>
 
           {/* Mobile menu button */}
           <div className="-mr-2 flex items-center md:hidden">
             {" "}
-            {/* Tambahkan items-center di sini */}
-            <ThemeToggle /> {/* Tambahkan tombol tema di mobile juga */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
@@ -132,7 +125,7 @@ const Navbar = () => {
                     }
                   `}
                 >
-                  <IconComponent className="h-5 w-5" /> {/* Render ikon */}
+                  <IconComponent className="h-5 w-5" />
                   <span>{link.name}</span>
                 </Link>
               );
