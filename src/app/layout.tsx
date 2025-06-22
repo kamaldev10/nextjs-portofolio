@@ -1,10 +1,9 @@
 // app/layout.tsx
 import "./globals.css"; // Pastikan ini ada dan diimpor
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; // Contoh: Menggunakan Google Font
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-// Impor komponen yang akan digunakan di layout (kita akan buat ini nanti)
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -45,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth suppressHydrationWarning">
       <body
         className={`${inter.className} antialiased 
           bg-white text-gray-800     
