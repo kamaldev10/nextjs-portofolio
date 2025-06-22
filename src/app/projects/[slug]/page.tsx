@@ -11,6 +11,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
+  // Gunakan tipe yang sudah didefinisikan
   const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) {
@@ -46,6 +47,7 @@ export default function ProjectDetailPage({
 }: {
   params: { slug: string };
 }) {
+  // Gunakan tipe yang sudah didefinisikan
   const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) {
