@@ -5,8 +5,6 @@ import Link from "next/link"; // Untuk tombol "View All Projects"
 import React from "react"; // Penting: Tambahkan import React
 
 const ProjectsSection = () => {
-  // Ambil hanya beberapa proyek teratas untuk ditampilkan di halaman beranda.
-  // Misalnya, 3 proyek terbaru/unggulan.
   const featuredProjects = projects.slice(0, 3);
 
   return (
