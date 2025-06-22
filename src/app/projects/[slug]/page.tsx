@@ -4,13 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react"; // Impor ikon untuk tautan eksternal
 
+// --- Mendefinisikan Tipe Props untuk Halaman Dinamis ---
+// Ini akan lebih sesuai dengan ekspektasi Next.js
+interface ProjectDetailPageProps {
+  params: {
+    slug: string;
+  };
+}
+
 // --- Fungsi untuk menghasilkan metadata dinamis ---
 // Metadata ini akan unik untuk setiap halaman detail proyek
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export async function generateMetadata({ params }: ProjectDetailPageProps) {
   // Gunakan tipe yang sudah didefinisikan
   const project = projects.find((p) => p.slug === params.slug);
 
@@ -42,11 +46,7 @@ export async function generateStaticParams() {
 }
 
 // --- Komponen Halaman Detail Proyek ---
-export default function ProjectDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
   // Gunakan tipe yang sudah didefinisikan
   const project = projects.find((p) => p.slug === params.slug);
 
