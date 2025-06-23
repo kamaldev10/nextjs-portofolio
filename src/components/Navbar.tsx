@@ -5,7 +5,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 // Import ikon yang dibutuhkan dari lucide-react
-import { Home, Folder, Mail, LetterTextIcon } from "lucide-react"; // Perhatikan 'lucide-react'
+import { PiCertificateFill } from "react-icons/pi";
+import { RiHome9Fill } from "react-icons/ri";
+import { SiOpenproject } from "react-icons/si";
+import { ImMail3 } from "react-icons/im";
+
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
@@ -13,10 +17,10 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const navLinks = [
-    { name: "Home", icon: Home, href: "/" }, // Menggunakan Home dari lucide-react
-    { name: "Projects", icon: Folder, href: "/projects" }, // Menggunakan Folder
-    { name: "Certificates", icon: LetterTextIcon, href: "/certificates" },
-    { name: "Contact", icon: Mail, href: "/contact" }, // Menggunakan Mail
+    { name: "Home", icon: RiHome9Fill, href: "/" },
+    { name: "Projects", icon: SiOpenproject, href: "/projects" },
+    { name: "Certificates", icon: PiCertificateFill, href: "/certificates" },
+    { name: "Contact", icon: ImMail3, href: "/contact" },
   ];
 
   return (

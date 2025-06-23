@@ -1,6 +1,6 @@
 // components/sections/ProjectsSection.tsx
 import ProjectCard from "@/components/ProjectCard";
-import { projects } from "@/lib/data"; // Import data proyek
+import { projects } from "@/lib/projectsDatas"; // Import data proyek
 import Link from "next/link"; // Untuk tombol "View All Projects"
 import React from "react"; // Penting: Tambahkan import React
 
