@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 export function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { slug?: string };
 }): Metadata {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) {
@@ -20,7 +20,7 @@ export function generateMetadata({
   };
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default function ProjectPage({ params }: { params: { slug?: string } }) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 
