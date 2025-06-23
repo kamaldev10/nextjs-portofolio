@@ -2,7 +2,7 @@
 
 export interface Project {
   id: string;
-  slug: string;
+  slug?: string;
   title: string;
   description: string;
   longDescription: string[]; // Bisa lebih dari satu paragraf
