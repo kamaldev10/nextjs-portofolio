@@ -1,70 +1,86 @@
 // app/projects/[slug]/page.tsx
-import { projects } from "@/lib/data"; // Impor data dan tipe proyek
+import { projects } from "@/lib/projectsDatas"; // Impor data dan tipe proyek
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react"; // Impor ikon untuk tautan eksternal
+import { Metadata } from "next";
+import { FaArrowLeft } from "react-icons/fa";
 
-// --- Mendefinisikan Tipe Props untuk Halaman Dinamis ---
-// Ini akan lebih sesuai dengan ekspektasi Next.js
-interface ProjectDetailPageProps {
-  params: {
-    slug: string;
-  };
-}
+// =======================================================================
+// 1. TIPE PROPS UNTUK generateMetadata
+// Benar: `params` adalah objek biasa (sinkron).
+// =======================================================================
+type GenerateMetadataProps = {
+  params: { slug: string };
+};
 
-// --- Fungsi untuk menghasilkan metadata dinamis ---
-// Metadata ini akan unik untuk setiap halaman detail proyek
-export async function generateMetadata({ params }: ProjectDetailPageProps) {
-  // Gunakan tipe yang sudah didefinisikan
+/**
+ * Fungsi ini menghasilkan metadata dinamis untuk halaman (SEO).
+ */
+export async function generateMetadata({
+  params,
+}: GenerateMetadataProps): Promise<Metadata> {
   const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) {
     return {
-      title: "Proyek Tidak Ditemukan | Portfolio",
-      description: "Halaman proyek yang Anda cari tidak ada.",
+      title: "Project Not Found", // Menggunakan judul dari kode asli Anda
     };
   }
 
   return {
-    title: `${project.title} | Proyek Saya`,
+    title: project.title,
     description: project.description,
-    keywords: project.tags.join(", "),
-    openGraph: {
-      title: `${project.title} | Proyek Saya`,
-      description: project.description,
-      images: [project.image],
-    },
   };
 }
 
-// --- Fungsi untuk menghasilkan jalur statis (Static Site Generation - SSG) ---
-export async function generateStaticParams() {
-  // Ambil semua slug dari data proyek
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
-}
+// =======================================================================
+// 2. TIPE PROPS UNTUK KOMPONEN HALAMAN (PAGE)
+// Benar: `params` adalah sebuah Promise.
+// =======================================================================
+type ProjectDetailPageProps = {
+  params: Promise<{ slug: string }>;
+  // searchParams juga Promise jika Anda perlu menggunakannya
+  // searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-// --- Komponen Halaman Detail Proyek ---
-export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  // Gunakan tipe yang sudah didefinisikan
-  const project = projects.find((p) => p.slug === params.slug);
+/**
+ * Komponen utama untuk menampilkan halaman detail proyek.
+ * Dibuat `async` untuk menangani props Promise.
+ */
+export default async function ProjectDetailPage({
+  params,
+}: ProjectDetailPageProps) {
+  // --- PERBAIKAN LOGIKA ---
+  // Menggunakan `await` untuk mendapatkan `slug` dari Promise `params`.
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  // --- AKHIR PERBAIKAN LOGIKA ---
 
+  // Penanganan jika proyek tidak ditemukan.
+  // JSX ini diambil dari kode asli Anda dan tidak diubah.
   if (!project) {
-    // Handle case where project is not found (shouldn't happen with generateStaticParams unless invalid slug is accessed)
     return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">
-        <h1 className="text-4xl font-bold text-red-500 mb-4">
-          404 - Proyek Tidak Ditemukan
-        </h1>
-        <p className="text-lg text-gray-700 dark:text-gray-300">
-          Maaf, proyek yang Anda cari tidak ada.
+      <div className="flex flex-col items-center justify-center min-h-screen text-center">
+        <h1 className="text-4xl font-bold mb-4">404 - Project Not Found</h1>
+        <p className="text-lg mb-8">
+          The project you are looking for does not exist.
         </p>
-        <Link
-          href="/projects"
-          className="mt-8 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
-        >
-          Kembali ke Daftar Proyek
+        <Link href="/projects" className="text-blue-500 hover:underline">
+          Back to Projects
+        </Link>
+      </div>
+    );
+  }
+  if (!project) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen text-center">
+        <h1 className="text-4xl font-bold mb-4">404 - Project Not Found</h1>
+        <p className="text-lg mb-8">
+          The project you are looking for does not exist.
+        </p>
+        <Link href="/projects" className="text-blue-500 hover:underline">
+          Back to Projects
         </Link>
       </div>
     );
@@ -76,7 +92,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         href="/projects"
         className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:underline mb-8"
       >
-        &larr; Kembali ke Proyek
+        <FaArrowLeft className="me-2 sm:me-3" /> Kembali ke Proyek
       </Link>
       <div className="flex">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">

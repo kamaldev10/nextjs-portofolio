@@ -1,6 +1,6 @@
 // app/projects/page.tsx
 import ProjectCard from "@/components/ProjectCard";
-import { projects } from "@/lib/data"; // Import data proyek
+import { projects } from "@/lib/projectsDatas"; // Import data proyek
 
 // Halaman ini adalah Server Component secara default.
 // Metadata sudah didefinisikan di app/projects/layout.tsx
