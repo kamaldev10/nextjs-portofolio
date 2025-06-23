@@ -1,7 +1,7 @@
 // 📁 app/projects/[slug]/page.tsx
 import ProjectDetailPage from "@/components/projects/ProjectDetailPage";
 import { projects } from "@/lib/data/projectsData";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 // // SEO Metadata
