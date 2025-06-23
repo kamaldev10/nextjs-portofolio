@@ -44,14 +44,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth suppressHydrationWarning">
+    <html lang="en" className="scroll-smooth " suppressHydrationWarning>
       <body
         className={`${inter.className} antialiased 
-          bg-white text-gray-800     
-          dark:bg-gray-900 dark:text-gray-100 
         `}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
           <main className="min-h-screen">{children}</main>
           <Footer />

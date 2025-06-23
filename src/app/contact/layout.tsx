@@ -24,13 +24,5 @@ export default function ContactLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    // Anda bisa menambahkan styling atau struktur tambahan di sini
-    // yang hanya berlaku untuk halaman di bawah /contact.
-    // Misalnya, sebuah banner atau header khusus.
-    <section className="min-h-screen py-16">
-      {/* children di sini akan merender app/contact/page.tsx */}
-      {children}
-    </section>
-  );
+  return <section className="min-h-screen py-16">{children}</section>;
 }

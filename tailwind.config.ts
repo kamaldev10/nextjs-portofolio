@@ -1,19 +1,17 @@
 import type { Config } from "tailwindcss";
+// import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config: Config = {
-  darkMode: "class", // <--- Pastikan baris ini ada
-
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}", // Untuk App Router
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}", // Untuk Pages Router (jika pakai)
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
-      // Kamu bisa menambahkan konfigurasi tema kustom di sini
-      // Contoh:
-      // colors: {
-      //   'primary-blue': '#243c5a',
+      // fontFamily: {
+      //   sans: ["var(--font-sans)", ...fontFamily.sans],
       // },
     },
   },

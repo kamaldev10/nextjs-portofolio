@@ -21,17 +21,16 @@ const skills = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-8 mt-16">
-      {" "}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white text-center mb-12">
+    <section id="skills" className="py-16 ">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white text-center mb-12">
           My Skills
         </h2>
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-6 justify-center-safe">
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-10 gap-6 justify-center-safe">
           {skills.map((skill) => (
             <div
               key={skill.name}
-              className="flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md
+              className="flex flex-col items-center p-4 bg-slate-400/30 dark:bg-gray-700 rounded-lg shadow-md
                          hover:scale-105 transition-transform duration-300 transform cursor-pointer
                          border border-gray-200 dark:border-gray-600 w-32 h-32 justify-center"
             >

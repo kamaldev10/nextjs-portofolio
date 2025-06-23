@@ -6,8 +6,11 @@ export interface Project {
   title: string;
   description: string;
   longDescription: string[]; // Bisa lebih dari satu paragraf
-  image: string; // Thumbnail utama
-  images: string[]; // Gambar-gambar detail proyek
+  thumbnailImage: string;
+  mobileImage?: string;
+  desktopImage?: string;
+  mobileImages: string[];
+  desktopImages: string[];
   tags: string[]; // Teknologi yang digunakan
   repoUrl?: string; // Link ke GitHub repo (opsional)
   liveUrl?: string; // Link ke live demo (opsional)
@@ -27,8 +30,11 @@ export const projects: Project[] = [
       "Dengan fitur utama yaitu analisis komentar berbasis AI, integrasi Youtube API, Otentikasi pengguna yang aman, dashboard yang interaktif dan penangannan eror yang tangguh. Dengan fitur utama yang disajikan, menjadikan User Experience yang interaktif dan menarik",
       "Aplikasi ini merupakan perwujudan implementasi dari keresahan kami dari Capstone Team CC25-CF219 pada program Coding Camp 2025 Powered By DBS Foundation yang diselenggarakan oleh Dicoding Indonesia. Tim kami beranggotakan saya, Ferdian, Salwa, Rafinanda, Solihun dan Rina",
     ],
-    image: "/images/projects/judi-guard/judiguard-thumbnail.webp",
-    images: [
+    thumbnailImage: "/images/projects/judi-guard/judiguard-thumbnail.webp",
+    mobileImage: "",
+    desktopImage: "",
+    mobileImages: ["/images/projects/judi-guard/judiguard-thumbnail.webp"],
+    desktopImages: [
       "/images/projects/judi-guard/judiguard-detail-1.webp",
       "/images/projects/judi-guard/judiguard-detail-2.webp",
       "/images/projects/judi-guard/judiguard-detail-3.webp",
@@ -52,7 +58,7 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    slug: "to talky-app",
+    slug: "to-talky-app",
     title: "To Talky App",
     description:
       " aplikasi berbasis web yang dikembangkan menggunakan React + Vite dengan pendekatan mobile-first. Aplikasi ini dirancang untuk membantu anak dengan berkebutuhan khusus untuk belajar melalui suara dan gambar.",
@@ -60,11 +66,16 @@ export const projects: Project[] = [
       "Aplikasi manajemen tugas ini dirancang untuk tim kecil, memungkinkan pengguna untuk membuat, menetapkan, dan melacak tugas secara efisien. Fitur utama meliputi pembaruan tugas real-time menggunakan WebSockets, notifikasi, dan antarmuka drag-and-drop untuk pengorganisasian tugas.",
       "Pengembangan backend menggunakan Node.js dan Express.js, dengan MongoDB sebagai database, memastikan skalabilitas dan performa. Frontend dibangun dengan React untuk pengalaman pengguna yang dinamis.",
     ],
-    image: "/images/to-talky/to-talky-thumbnail.webp",
-    images: [
-      "/images/to-talky/to-talky-detail-1.webp",
-      "/images/to-talky/to-talky-detail-2.webp",
+    thumbnailImage: "/images/projects/to-talky/totalky-thumbnail.webp",
+    mobileImage: "",
+    desktopImage: "",
+    mobileImages: ["/images/projects/to-talky/totalky-thumbnail.webp"],
+    desktopImages: [
+      "/images/projects/to-talky/totalky-detail-1.webp",
+      "/images/projects/to-talky/totalky-detail-2.webp",
+      "/images/projects/to-talky/totalky-detail-3.webp",
     ],
+
     tags: ["React", "Vite", "Tailwind Css"],
     repoUrl: "https://github.com/kamaldev10/Talky-app.git",
     liveUrl: "https://totalky.vercel.app",
@@ -81,8 +92,36 @@ export const projects: Project[] = [
       "Platform blog ini dibuat untuk menyediakan cara yang cepat dan efisien bagi penulis untuk mempublikasikan konten. Menggunakan Next.js untuk Server-Side Rendering dan Static Site Generation untuk performa dan SEO yang optimal.",
       "Konten ditulis dalam Markdown (atau MDX) dan diproses pada waktu build, menghasilkan blog yang sangat cepat dimuat. Fitur termasuk tag, kategori, pencarian, dan desain responsif.",
     ],
-    image: "/images/project-3-thumbnail.webp",
-    images: [
+    thumbnailImage: "/images/projects/judi-guard/judiguard-thumbnail.webp",
+    mobileImage: "",
+    desktopImage: "",
+    mobileImages: ["/images/project-3-thumbnail.webp"],
+    desktopImages: [
+      "/images/project-3-detail-1.webp",
+      "/images/project-3-detail-2.webp",
+    ],
+
+    tags: ["Next.js", "MDX", "Tailwind CSS", "SEO", "Markdown"],
+    repoUrl: "https://github.com/yourusername/personal-blog-repo",
+    liveUrl: "https://blog.yourportfolio.com",
+    role: "Solo Developer",
+    year: 2023,
+  },
+  {
+    id: "4",
+    slug: "personal-blog-platform",
+    title: "Platform Blog Pribadi",
+    description:
+      "Platform blog pribadi yang cepat dan ramah SEO untuk berbagi artikel dan pemikiran.",
+    longDescription: [
+      "Platform blog ini dibuat untuk menyediakan cara yang cepat dan efisien bagi penulis untuk mempublikasikan konten. Menggunakan Next.js untuk Server-Side Rendering dan Static Site Generation untuk performa dan SEO yang optimal.",
+      "Konten ditulis dalam Markdown (atau MDX) dan diproses pada waktu build, menghasilkan blog yang sangat cepat dimuat. Fitur termasuk tag, kategori, pencarian, dan desain responsif.",
+    ],
+    thumbnailImage: "/images/projects/judi-guard/judiguard-thumbnail.webp",
+    mobileImage: "",
+    desktopImage: "",
+    mobileImages: ["/images/project-3-thumbnail.webp"],
+    desktopImages: [
       "/images/project-3-detail-1.webp",
       "/images/project-3-detail-2.webp",
     ],
