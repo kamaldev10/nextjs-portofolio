@@ -1,24 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { FaExternalLinkAlt, FaAward } from "react-icons/fa";
 import { Certificate } from "@/lib/data/certificatesData"; // Impor tipe data
+import ImageZoomModal from "../ui/ImageZoomModal";
 
 interface CertificateCardProps {
   certificate: Certificate;
 }
 
 const CertificateCard: React.FC<CertificateCardProps> = ({ certificate }) => {
+  const [zoomOpen, setZoomOpen] = useState(false);
+  const [zoomSrc, setZoomSrc] = useState("");
   return (
     <div className="flex flex-col bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-b-xl shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-1 overflow-hidden">
       {/* Bagian atas: Logo/Gambar */}
       <div className="w-full bg-gray-50 dark:bg-gray-900/50 flex items-center justify-center ">
         <div className="relative w-full h-52 border-b-1 border-b-gray-800/50 ">
           <Image
+            onClick={() => {
+              setZoomSrc(certificate.image);
+              setZoomOpen(true);
+            }}
             src={certificate.image}
             alt={`${certificate.issuedBy} certificate`}
             fill
-            className="object-contain"
+            className="object-contain cursor-zoom-in"
           />
         </div>
       </div>
@@ -47,7 +56,7 @@ const CertificateCard: React.FC<CertificateCardProps> = ({ certificate }) => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-semibold  dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
           >
-            Lihat Kredensial <FaExternalLinkAlt size={12} />
+            Credentials <FaExternalLinkAlt size={12} />
           </Link>
           {certificate.credentialId && (
             <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
@@ -56,6 +65,12 @@ const CertificateCard: React.FC<CertificateCardProps> = ({ certificate }) => {
           )}
         </div>
       </div>
+
+      <ImageZoomModal
+        isOpen={zoomOpen}
+        onClose={() => setZoomOpen(false)}
+        src={zoomSrc}
+      />
     </div>
   );
 };

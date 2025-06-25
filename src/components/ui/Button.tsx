@@ -36,7 +36,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        "bg-accent dark:bg-indigo-700 dark:hover:bg-indigo-800 border-accent dark:border-indigo-800 text-gray-800 hover:bg-accent/50 hover:text-gray-900 focus:ring-primary",
+        "bg-accent dark:bg-indigo-700 dark:hover:bg-indigo-700/30 border-accent dark:border-indigo-800 text-gray-800  hover:bg-accent/50 hover:text-gray-900 focus:ring-primary",
       secondary:
         "border-gray-600 text-gray-600 hover:bg-gray-300 hover:text-white dark:border-gray-400 dark:text-gray-400 dark:hover:bg-gray-100/50 focus:ring-gray-500",
       danger:
