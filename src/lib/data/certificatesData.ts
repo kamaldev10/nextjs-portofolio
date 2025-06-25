@@ -37,6 +37,40 @@ export const featuredCertificates: Certificate[] = [
     credentialUrl: "",
     image: "/images/certificates/oracle/1.png",
   },
+  {
+    title: "Magang Pada Bidang Daskrimti pada Asisten Pembinaan KEJATI Riau",
+    issuedBy: "Kejaksaan Tinggi Riau",
+    issueDate: "february 29, 2024",
+    credentialId: "",
+    credentialUrl: "",
+    image: "/images/certificates/magang/sertifikat magang.jpg",
+  },
+  {
+    title: "TWKM Aceh ke 33 MAPALA Tingkat Perguruan Tinggi Se-Indonesia",
+    issuedBy: "Mahagapa UGP",
+    issueDate: "November 18, 2023",
+    credentialId: "",
+    credentialUrl: "",
+    image:
+      "/images/certificates/organization/twkm/SERTIFIKAT TWKM ACEH 33.webp",
+  },
+  {
+    title:
+      "NATIONAL SEMINAR - The Role of Empowered Communities for Sustainable Peat Management",
+    issuedBy: "Syiah Kuala University",
+    issueDate: "February 16, 2023",
+    credentialId: "",
+    credentialUrl: "",
+    image: "/images/certificates/organization/sertifikat-national-seminar.webp",
+  },
+  {
+    title: "Training Organization I",
+    issuedBy: "Himalkom UNRI",
+    issueDate: "October 3, 2021",
+    credentialId: "",
+    credentialUrl: "",
+    image: "/images/certificates/organization/himalkom/sertifikat to-1.webp",
+  },
 ];
 
 // NEW: All certificates, categorized by the issuer/brand.
@@ -174,6 +208,89 @@ export const categorizedCertificates: Record<string, Certificate[]> = {
       credentialId: "",
       credentialUrl: "",
       image: "/images/certificates/oracle/4.png",
+    },
+  ],
+  "Kejaksaan Tinggi Riau": [
+    {
+      title: "Magang Pada Bidang Daskrimti pada Asisten Pembinaan KEJATI Riau",
+      issuedBy: "Kejaksaan Tinggi Riau",
+      issueDate: "february 29, 2024",
+      credentialId: "",
+      credentialUrl: "",
+      image: "/images/certificates/magang/sertifikat magang.jpg",
+    },
+  ],
+  Organizations: [
+    {
+      title: "TWKM Aceh ke 33 MAPALA Tingkat Perguruan Tinggi Se-Indonesia ",
+      issuedBy: "Mahagapa UGP",
+      issueDate: "November 18, 2023",
+      credentialId: "",
+      credentialUrl: "",
+      image:
+        "/images/certificates/organization/twkm/SERTIFIKAT TWKM ACEH 33.webp",
+    },
+    {
+      title:
+        "NATIONAL SEMINAR - The Role of Empowered Communities for Sustainable Peat Management",
+      issuedBy: "Syiah Kuala University",
+      issueDate: "february 16, 2023",
+      credentialId: "",
+      credentialUrl: "",
+      image:
+        "/images/certificates/organization/sertifikat-national-seminar.webp",
+    },
+    {
+      title: "Training Organization I",
+      issuedBy: "Himalkom UNRI",
+      issueDate: "October 3, 2021",
+      credentialId: "",
+      credentialUrl: "",
+      image: "/images/certificates/organization/himalkom/sertifikat to-1.webp",
+    },
+    {
+      title: "Pelatihan Administrasi, Keuangan, dan Keprotokoleran",
+      issuedBy: "Himalkom UNRI",
+      issueDate: "November 6, 2021",
+      credentialId: "",
+      credentialUrl: "",
+      image:
+        "/images/certificates/organization/himalkom/adm-keuangan-proto.webp",
+    },
+    {
+      title: "Integrasi Data di Smart City Menuju Pekanbaru Madani",
+      issuedBy: "Himalkom UNRI",
+      issueDate: "August 19, 2021",
+      credentialId: "",
+      credentialUrl: "",
+      image:
+        "/images/certificates/organization/himalkom/kuliah-umum-integrasidata.webp",
+    },
+    {
+      title:
+        "Webinar Kewirausahaan - How to Start A Digital Company with Less Budget",
+      issuedBy: "Himalkom UNRI",
+      issueDate: "August 21, 2021",
+      credentialId: "",
+      credentialUrl: "",
+      image:
+        "/images/certificates/organization/himalkom/webinar-kewirausahaan.webp",
+    },
+    {
+      title: "Workshop UI/UX - Let's Start Your Journey with UI/UX Design",
+      issuedBy: "Himalkom UNRI",
+      issueDate: "November 20, 2021",
+      credentialId: "",
+      credentialUrl: "",
+      image: "/images/certificates/organization/himalkom/workshop-uiux.webp",
+    },
+    {
+      title: "Class Material",
+      issuedBy: "English Club Indonesia",
+      issueDate: "September, 2020",
+      credentialId: "",
+      credentialUrl: "",
+      image: "/images/certificates/organization/english-club-indonesia.webp",
     },
   ],
 };
