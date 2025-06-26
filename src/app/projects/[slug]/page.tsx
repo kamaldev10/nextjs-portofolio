@@ -4,12 +4,14 @@ import { projects } from "@/lib/data/projectsData";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// SEO Metadata
-export function generateMetadata({
-  params,
-}: {
+type ProjectPageParams = {
   params: { slug: string };
-}): Metadata {
+};
+
+// SEO Metadata
+export async function generateMetadata({
+  params,
+}: ProjectPageParams): Promise<Metadata> {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) {
     return { title: "Project Not Found" };
@@ -20,7 +22,7 @@ export function generateMetadata({
   };
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage({ params }: ProjectPageParams) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return notFound();
 

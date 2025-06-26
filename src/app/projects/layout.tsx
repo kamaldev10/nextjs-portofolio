@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Proyek-Proyek Saya | Ali Musthafa Kamal Portfolio",
+  title: "My Projects | Ali Musthafa Kamal Portfolio",
   description:
-    "Jelajahi koleksi proyek pengembangan web dan desain saya, menunjukkan keahlian dan passion saya.",
+    "Explore my collection of web development and design projects, showcasing my skills and interests.",
 };
 
 export default function ProjectsLayout({

@@ -5,9 +5,9 @@ import type { Metadata } from "next"; // Penting: Impor Metadata
 // --- Metadata untuk Halaman Kontak ---
 // Ini akan diproses di server untuk SEO.
 export const metadata: Metadata = {
-  title: "Hubungi Saya | Ali Musthafa Kamal", // Sesuaikan judul
+  title: "Contact Me | Ali Musthafa Kamal", // Sesuaikan judul
   description:
-    "Jangan ragu untuk menghubungi Ali Musthafa Kamal untuk kolaborasi, pertanyaan, atau sekadar menyapa!", // Sesuaikan deskripsi
+    "Feel free to contact Ali Musthafa Kamal for collaborations, questions, or just to say hello!", // Sesuaikan deskripsi
   keywords: [
     "kontak",
     "Ali Musthafa Kamal",

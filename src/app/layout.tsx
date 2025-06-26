@@ -1,16 +1,16 @@
 // app/layout.tsx
 import "./globals.css"; // Pastikan ini ada dan diimpor
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ali Musthafa Kamal | Portfolio",
+  title: "Ali Musthafa Kamal - Portfolio",
   description: "FullStack Developer, Front End Developer, Back end Developer",
   keywords: [
     "portfolio",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         alt: "Ali Musthafa Kamal Portfolio",
       },
     ],
-    locale: "en_US",
+    locale: "Riau_Ind",
     type: "website",
   },
 };

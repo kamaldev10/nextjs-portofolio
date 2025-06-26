@@ -5,7 +5,7 @@ import CertificateCard from "@/components/certificates/CertificateCard";
 
 // SEO Metadata in English
 export const metadata: Metadata = {
-  title: "Certifications | My Portfolio",
+  title: "Certifications | Ali Musthafa Kamal Portofolio",
   description:
     "A comprehensive list of my professional certifications and qualifications.",
 };
