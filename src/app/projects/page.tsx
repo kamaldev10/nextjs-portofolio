@@ -4,7 +4,7 @@ import { projects } from "@/lib/data/projectsData";
 export default function ProjectsListPage() {
   return (
     <section>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}

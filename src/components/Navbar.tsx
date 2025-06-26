@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 // Import ikon yang dibutuhkan dari lucide-react
 import { PiCertificateFill } from "react-icons/pi";
 import { RiHome9Fill } from "react-icons/ri";
-import { SiOpenproject } from "react-icons/si";
+import { FaProjectDiagram } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { LuPanelBottomClose, LuPanelTopClose } from "react-icons/lu";
 
@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", icon: RiHome9Fill, href: "/" },
-    { name: "Projects", icon: SiOpenproject, href: "/projects" },
+    { name: "Projects", icon: FaProjectDiagram, href: "/projects" },
     { name: "Certificates", icon: PiCertificateFill, href: "/certificates" },
     { name: "Contact", icon: IoMail, href: "/contact" },
   ];

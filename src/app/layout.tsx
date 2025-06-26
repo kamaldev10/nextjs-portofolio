@@ -18,16 +18,17 @@ export const metadata: Metadata = {
     "fullstack developer",
     "Next.js",
     "React",
+    "Tailwind css",
   ],
   authors: [{ name: "Ali Musthafa Kamal" }],
   openGraph: {
-    title: "Ali Musthafa Kamal | Portfolio",
+    title: "Ali Musthafa Kamal - Portfolio",
     description: "A showcase of my work and skills.",
     url: "https://yourportfolio.com",
-    siteName: "Ali Musthafa Kamal | Portfolio",
+    siteName: "Ali Musthafa Kamal - Portfolio",
     images: [
       {
-        url: "/images/og-image.jpg", // Gambar untuk social media preview (buat di public/images)
+        url: "/images/og-image.png", // Gambar untuk social media preview (buat di public/images)
         width: 1200,
         height: 630,
         alt: "Ali Musthafa Kamal Portfolio",

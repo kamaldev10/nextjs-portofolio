@@ -70,7 +70,7 @@ const ContactPage = () => {
     <div className="container mx-auto px-4 sm:py-0">
       {" "}
       {/* Hapus py-16 di sini karena sudah ada di layout */}
-      <div className="max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+      <div className="max-w-6xl mx-auto bg-white dark:bg-gray-800 dark:border-0 border-1 border-gray-800 rounded-lg shadow-xl overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Bagian Kiri: Informasi Kontak */}
           <div className="p-8 md:p-12 lg:p-16 bg-gradient-to-br from-slate-900 to-slate-600 dark:bg-gradient-to-br dark:from-indigo-600 dark:to-purple-900 text-white flex flex-col justify-between">

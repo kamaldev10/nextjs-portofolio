@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IoCaretBack } from "react-icons/io5";
 
 export default function NotFound() {
   return (
@@ -13,7 +14,7 @@ export default function NotFound() {
         href="/projects"
         className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
       >
-        🔙 Kembali ke Daftar Proyek
+        <IoCaretBack /> Kembali ke Daftar Proyek
       </Link>
     </div>
   );
