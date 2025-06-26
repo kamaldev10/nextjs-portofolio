@@ -187,9 +187,33 @@ export const projects: Project[] = [
     ],
     tags: ["Webpack", "Leaflet", "Tailwind CSS"],
     repoUrl: "https://github.com/kamaldev10/dicoding-story-app-final",
-    liveUrl: "https://dicodingstory-app.netlify.app/",
+    liveUrl: "https://dicodingstory-app.netlify.app",
     role: "Front End Developer",
     year: 2025,
+  },
+  {
+    id: "6",
+    slug: "movie-list",
+    title: "Movie List",
+    description:
+      "Movie List adalah sebuah aplikasi yang menampilkan film-film dengan memanfaatkan API movie yang diberikan oleh Binar Academy.",
+    longDescription: [
+      "Aolikasi ini adalah aplikasi yang dikembangkan menggunakan React + Vite sebagai media pembelajaran dalam Binar Academy pada MBKM Wave 5 ",
+    ],
+    thumbnailImage: "/images/projects/movie-list/desktop-view/1.webp",
+    mobileImage: "",
+    desktopImage: "/images/projects/movie-list/desktop-view/1.webp",
+    mobileImages: [""],
+    desktopImages: [
+      "/images/projects/movie-list/desktop-view/1.webp",
+      "/images/projects/movie-list/desktop-view/2.webp",
+      "/images/projects/movie-list/desktop-view/3.webp",
+    ],
+    tags: ["Webpack", "Leaflet", "Tailwind CSS"],
+    repoUrl: "https://github.com/kamaldev10/challenge-05.git",
+    liveUrl: "https://movie-list-tan-phi.vercel.app",
+    role: "Front End Developer",
+    year: 2023,
   },
   // Tambahkan lebih banyak proyek sesuai kebutuhan Anda
 ];
