@@ -163,5 +163,33 @@ export const projects: Project[] = [
     role: "Front End Developer",
     year: 2023,
   },
+  {
+    id: "5",
+    slug: "dicoding-story-app",
+    title: "Dicoding Story App",
+    description:
+      "Dicoding Story App adalah sebuah aplikasi yang memanfaatkan API dari dicoding yang berfungsi untuk berbagi cerita seperti fitur sosial media.",
+    longDescription: [
+      "Aplikasi ini merupakan aplikasi yang berfungsi untuk menampilkan, menambahkan, bahkan menyimpan/mengarsipkan cerita. Anda dapat menambahkan cerita dengan memberikan deskripsi, foto atau gambar dan lokasi anda. ",
+      "Aplikasi ini memanfaatkan beberapa teknologi webpack, leaflet, tailwind CSS dan javascript. ",
+    ],
+    thumbnailImage: "/images/projects/dicoding-story/desktop-view/2.webp",
+    mobileImage: "",
+    desktopImage: "/images/projects/dicoding-story/desktop-view/2.webp",
+    mobileImages: [""],
+    desktopImages: [
+      "/images/projects/dicoding-story/desktop-view/1.webp",
+      "/images/projects/dicoding-story/desktop-view/2.webp",
+      "/images/projects/dicoding-story/desktop-view/3.webp",
+      "/images/projects/dicoding-story/desktop-view/4.webp",
+      "/images/projects/dicoding-story/desktop-view/5.webp",
+      "/images/projects/dicoding-story/desktop-view/6.webp",
+    ],
+    tags: ["Webpack", "Leaflet", "Tailwind CSS"],
+    repoUrl: "https://github.com/kamaldev10/dicoding-story-app-final",
+    liveUrl: "https://dicodingstory-app.netlify.app/",
+    role: "Front End Developer",
+    year: 2025,
+  },
   // Tambahkan lebih banyak proyek sesuai kebutuhan Anda
 ];
