@@ -1,10 +1,21 @@
+"use client";
 // components/sections/HeroSection.tsx
 import Link from "next/link";
-import { Button } from "../ui/Button";
 import { Github } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
+  const router = useRouter();
+
+  const handleNavigateProject = () => {
+    router.push("/projects");
+  };
+
+  const handleNavigateContact = () => {
+    router.push("/contact");
+  };
+
   return (
     <section
       id="home"
@@ -26,36 +37,57 @@ const HeroSection = () => {
         </p>
         <div className="inline-flex justify-center aling-middle mt-4 gap-3 sm:gap-5">
           <Link
-            href={""}
-            className="p-2 rounded-full dark:bg-gray-800 bg-accent hover:bg-emerald-500 hover:dark:bg-gray-900 hover:scale-105"
+            href="https://github.com/kamaldev10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full backdrop-blur-lg border border-white/10 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-white/20 hover:scale-110 hover:rotate-3 active:scale-95 active:rotate-0 transition-all duration-300 ease-out cursor-pointer hover:border-white/30 hover:bg-gradient-to-tr hover:from-white/10 hover:to-black/40 group relative overflow-hidden"
           >
-            <Github className="w-5 h-5 text-gray-800 dark:text-slate-100" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+            <div className="relative z-10">
+              <Github className="w-5 h-5 text-gray-800 group-hover:text-gray-800/90 dark:text-slate-100 group-hover:dark:text-slate-100/90  transition-colors duration-300" />
+            </div>
           </Link>
           <Link
-            href={""}
-            className="p-2 rounded-full dark:bg-gray-800 bg-accent hover:bg-emerald-500 hover:dark:bg-gray-900 hover:scale-105"
+            href="https://linkedin.com/in/alimusthafakamal"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-full backdrop-blur-lg border border-white/10 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-white/20 hover:scale-110 hover:rotate-3 active:scale-95 active:rotate-0 transition-all duration-300 ease-out cursor-pointer hover:border-white/30 hover:bg-gradient-to-tr hover:from-white/10 hover:to-black/40 group relative overflow-hidden"
           >
-            <FaLinkedinIn className="w-5 h-5 text-gray-800 dark:text-slate-100" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+            <div className="relative z-10">
+              <FaLinkedinIn className="w-5 h-5 text-gray-800 group-hover:text-gray-800/90 dark:text-slate-100 group-hover:dark:text-slate-100/90  transition-colors duration-300" />
+            </div>
           </Link>
         </div>
 
         <div className="mt-4 flex justify-center space-x-4">
-          <Button className="py-2 md:py-3">
-            <Link
-              href="/projects"
-              className="text-sm text-gray-800 dark:text-slate-100 hover:dark:text-slate-300"
-            >
-              View My Work
-            </Link>
-          </Button>
-          <Button variant="secondary" className="py-2 md:py-3">
-            <Link
-              href="/contact"
-              className="text-sm text-accent dark:text-accent-foreground hover:dark:text-gray-800"
-            >
-              Get In Touch
-            </Link>
-          </Button>
+          <button
+            onClick={handleNavigateProject}
+            className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px]  text-slate-100 font-medium group"
+          >
+            <div className="relative overflow-hidden">
+              <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                View My Work
+              </p>
+              <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                View My Work
+              </p>
+            </div>
+          </button>
+
+          <button
+            onClick={handleNavigateContact}
+            className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group"
+          >
+            <div className="relative overflow-hidden">
+              <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                Get In Touch
+              </p>
+              <p className="absolute top-7 left-0 group-hover:top-0 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                Get In Touch
+              </p>
+            </div>
+          </button>
         </div>
       </div>
     </section>
