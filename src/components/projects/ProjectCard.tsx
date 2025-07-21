@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaArrowRight } from "react-icons/fa"; // Menambahkan ikon untuk tombol
+import { FaArrowRight } from "react-icons/fa";
 
 interface ProjectCardProps {
   title: string;
@@ -20,22 +20,44 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   slug,
 }) => {
   return (
-    <div className="group relative block h-48 w-full rounded-xl shadow-lg overflow-hidden">
-      <Image
-        src={thumbnailImage}
-        alt={title}
-        fill
-        className="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:blur-xs"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      />
+    // Wrapper utama:
+    // Mobile: Tampilan card vertikal biasa dengan flex-col.
+    // Desktop (sm): Kembali ke block, relative dengan tinggi tetap untuk efek hover.
+    <div
+      className="group flex flex-col w-full rounded-xl shadow-lg overflow-hidden
+                 bg-white dark:bg-slate-800
+                 sm:block sm:relative sm:h-64" // sm:h-48 atau sm:h-64 sesuai selera
+    >
+      {/* Wrapper Gambar */}
+      {/* Mobile: Tinggi tetap, posisi normal di atas. */}
+      {/* Desktop (sm): Posisi absolute untuk mengisi seluruh card. */}
+      <div className="relative h-48 w-full sm:absolute sm:inset-0 sm:h-full">
+        <Image
+          src={thumbnailImage}
+          alt={title}
+          fill
+          className="absolute inset-0 h-full w-full object-cover 
+                     sm:transition-all sm:duration-700 sm:ease-in-out sm:group-hover:scale-110 sm:group-hover:blur-xs"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </div>
 
+      {/* Wrapper Konten (Overlay di desktop) */}
+      {/* Mobile: Tampilan blok biasa dengan padding. */}
+      {/* Desktop (sm): Menjadi overlay absolut yang hanya muncul saat hover. */}
       <div
-        className="absolute inset-0 flex flex-col items-center justify-end p-6 text-center text-white 
-                   bg-gradient-to-t from-black/80 via-black/50 to-transparent
-                   opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+        className="p-6 
+                   sm:absolute sm:inset-0 sm:flex sm:flex-col sm:items-center sm:justify-end sm:p-6 sm:text-center 
+                   sm:bg-gradient-to-t sm:from-black/80 sm:via-black/50 sm:to-transparent
+                   sm:opacity-0 sm:transition-opacity sm:duration-500 sm:ease-in-out sm:group-hover:opacity-100"
       >
-        <div className="transform transition-transform duration-500 ease-in-out translate-y-8 group-hover:translate-y-0 w-full text-slate-100">
-          <h3 className="text-2xl font-bold mb-2 ">{title}</h3>
+        {/* Konten Teks yang beranimasi */}
+        <div
+          className="w-full text-slate-900 dark:text-slate-100
+                     sm:text-white sm:transform sm:transition-transform sm:duration-500 sm:ease-in-out 
+                     sm:translate-y-8 sm:group-hover:translate-y-0"
+        >
+          <h3 className="text-xl font-bold mb-2">{title}</h3>
           <p className="mb-4 text-sm opacity-90 line-clamp-2">{description}</p>
           <Link
             href={`/projects/${slug}`}

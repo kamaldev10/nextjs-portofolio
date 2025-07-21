@@ -13,10 +13,10 @@ const ProjectsSection = () => {
         {/* Header Section tidak berubah */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
           <div className="mb-4 md:mb-0">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
               Featured Projects
             </h2>
-            <p className="mt-2 text-gray-600 dark:text-gray-300">
+            <p className=" text-xs sm:text-base mt-1 sm:mt-2 text-gray-600 dark:text-gray-300">
               A glimpse of my amazing and useful project for people.{" "}
             </p>
           </div>

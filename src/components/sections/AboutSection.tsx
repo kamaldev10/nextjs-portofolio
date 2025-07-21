@@ -13,7 +13,7 @@ const AboutSection = () => {
       </h2>
       <div className=" flex flex-col md:flex-row items-center justify-center ">
         <div className="md:w-1/2 order-2 md:order-1 mt-8 md:mt-0">
-          <div className="max-w-sm md:max-w-2xl mx-auto text-xs sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify space-y-4 ">
+          <div className="max-w-sm sm:max-w-2xl mx-5 sm:mx-auto text-xs sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify space-y-4 ">
             <p>
               I am an Information Systems student from the University of Riau.
               During college, I was active in the Himalkom organization, Mapala

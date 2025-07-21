@@ -19,7 +19,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className=" flex flex-col md:flex-row items-center justify-center min-h-[calc(100vh-4rem)] text-center px-5"
+      className=" flex flex-col md:flex-row items-center justify-center min-h-[calc(100dvh-7rem)] text-center px-5"
     >
       <div className="">
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight text-gray-900 dark:text-white">
@@ -60,12 +60,12 @@ const HeroSection = () => {
           </Link>
         </div>
 
-        <div className="mt-4 flex justify-center space-x-4">
+        <div className="mt-4 justify-center space-x-4">
           <button
             onClick={handleNavigateProject}
-            className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px]  text-slate-100 font-medium group"
+            className="cursor-pointer bg-gradient-to-b dark:from-indigo-500 from-accent dark:to-indigo-600 to-accent-foreground/90 dark:shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] shadow-[0px_4px_32px_0_rgba(22,163,74)] px-6 py-3 rounded-xl text-slate-100 font-medium group"
           >
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden text-sm sm:text-base">
               <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
                 View My Work
               </p>
@@ -77,9 +77,9 @@ const HeroSection = () => {
 
           <button
             onClick={handleNavigateContact}
-            className="cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group"
+            className="cursor-pointer bg-gradient-to-b dark:from-indigo-500 from-accent dark:to-indigo-600 to-accent-foreground/90 dark:shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] shadow-[0px_4px_32px_0_rgba(22,163,74)] px-6 py-3 rounded-xl text-slate-100 font-medium group"
           >
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden text-sm sm:text-base">
               <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
                 Get In Touch
               </p>
