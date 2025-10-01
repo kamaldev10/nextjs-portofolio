@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, {
   useCallback,
   useEffect,
@@ -18,7 +19,7 @@ export type LogoItem =
       href?: string;
       alt?: string;
       title?: string;
-      srcSet?: string;
+      //   srcSet?: string;
       sizes?: string;
       width?: number;
       height?: number;
@@ -82,8 +83,7 @@ const useResizeObserver = (
 
 const useImageLoader = (
   seqRef: React.RefObject<HTMLUListElement | null>,
-  onLoad: () => void,
-  dependencies: React.DependencyList
+  onLoad: () => void
 ) => {
   useEffect(() => {
     const images = seqRef.current?.querySelectorAll("img") ?? [];
@@ -96,9 +96,7 @@ const useImageLoader = (
     let remainingImages = images.length;
     const handleImageLoad = () => {
       remainingImages -= 1;
-      if (remainingImages === 0) {
-        onLoad();
-      }
+      if (remainingImages === 0) onLoad();
     };
 
     images.forEach((img) => {
@@ -117,7 +115,7 @@ const useImageLoader = (
         img.removeEventListener("error", handleImageLoad);
       });
     };
-  }, dependencies);
+  }, [seqRef, onLoad]);
 };
 
 const useAnimationLoop = (
@@ -190,7 +188,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, isHovered, pauseOnHover]);
+  }, [trackRef, targetVelocity, seqWidth, isHovered, pauseOnHover]);
 };
 
 export const LogoLoop = React.memo<LogoLoopProps>(
@@ -238,7 +236,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           ANIMATION_CONFIG.COPY_HEADROOM;
         setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
       }
-    }, []);
+    }, [logos, gap, logoHeight]);
 
     useResizeObserver(
       updateDimensions,
@@ -246,7 +244,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
       [logos, gap, logoHeight]
     );
 
-    useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight]);
+    useImageLoader(seqRef, updateDimensions);
 
     useAnimationLoop(
       trackRef,
@@ -305,7 +303,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             {item.node}
           </span>
         ) : (
-          <img
+          <Image
             className={cx(
               "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
               "[-webkit-user-drag:none] pointer-events-none",
@@ -315,10 +313,10 @@ export const LogoLoop = React.memo<LogoLoopProps>(
                 "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
             )}
             src={item.src}
-            srcSet={item.srcSet}
+            // srcSet={item.srcSet}
             sizes={item.sizes}
-            width={item.width}
-            height={item.height}
+            width={item.width ?? logoHeight}
+            height={item.height ?? logoHeight}
             alt={item.alt ?? ""}
             title={item.title}
             loading="lazy"
