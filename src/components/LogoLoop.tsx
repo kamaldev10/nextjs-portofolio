@@ -77,7 +77,7 @@ const useResizeObserver = (
     return () => {
       observers.forEach((observer) => observer?.disconnect());
     };
-  }, [callback, ...elements.map((el) => el.current)]);
+  }, [callback]);
 };
 
 const useImageLoader = (
