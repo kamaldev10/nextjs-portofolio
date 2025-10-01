@@ -1,40 +1,52 @@
 // components/sections/SkillsSection.tsx
 import React from "react";
-import LogoLoop from "../LogoLoop";
+import LogoLoop, { LogoItem } from "../LogoLoop";
 
-const skills: { name: string; src: string }[] = [
-  { name: "HTML5", src: "/images/skills/html5.svg" },
-  { name: "CSS3", src: "/images/skills/css3.svg" },
+const skills: LogoItem[] = [
+  { alt: "HTML5", src: "/images/skills/html5.svg", width: 50, height: 50 },
+  { alt: "CSS3", src: "/images/skills/css3.svg", width: 50, height: 50 },
   {
-    name: "JavaScript",
+    alt: "JavaScript",
     src: "/images/skills/javascript.svg",
+    width: 50,
+    height: 50,
   },
   {
-    name: "TypeScript",
+    alt: "TypeScript",
     src: "/images/skills/typescript.svg",
+    width: 50,
+    height: 50,
   },
-  { name: "React.js", src: "/images/skills/react.svg" },
-  { name: "Next.js", src: "/images/skills/nextjs.svg" },
+  { alt: "React.js", src: "/images/skills/react.svg", width: 50, height: 50 },
+  { alt: "Next.js", src: "/images/skills/nextjs.svg", width: 50, height: 50 },
   {
-    name: "Express.js",
+    alt: "Express.js",
     src: "/images/skills/express.svg",
+    width: 50,
+    height: 50,
   },
-  { name: "Node.js", src: "/images/skills/nodejs.svg" },
+  { alt: "Node.js", src: "/images/skills/nodejs.svg", width: 50, height: 50 },
   {
-    name: "Tailwind CSS",
+    alt: "Tailwind CSS",
     src: "/images/skills/tailwindcss.svg",
+    width: 50,
+    height: 50,
   },
   {
-    name: "Bootstrap",
+    alt: "Bootstrap",
     src: "/images/skills/bootstrap.svg",
+    width: 50,
+    height: 50,
   },
-  { name: "GitHub", src: "/images/skills/github.svg" },
-  { name: "Prisma", src: "/images/skills/prisma.svg" },
+  { alt: "GitHub", src: "/images/skills/github.svg", width: 50, height: 50 },
+  { alt: "Prisma", src: "/images/skills/prisma.svg", width: 50, height: 50 },
   {
-    name: "PostgreSQL",
+    alt: "PostgreSQL",
     src: "/images/skills/postgresql.svg",
+    width: 50,
+    height: 50,
   },
-  { name: "MongoDB", src: "/images/skills/mongodb.svg" },
+  { alt: "MongoDB", src: "/images/skills/mongodb.svg", width: 50, height: 50 },
 ];
 
 const SkillsSection = () => {
