@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { GoArrowUpRight } from "react-icons/go";
 import Link from "next/link";
@@ -82,7 +82,7 @@ const CardNav: React.FC<CardNavProps> = ({
     return 260;
   };
 
-  const createTimeline = () => {
+  const createTimeline = useCallback(() => {
     const navEl = navRef.current;
     if (!navEl) return null;
 
@@ -104,9 +104,9 @@ const CardNav: React.FC<CardNavProps> = ({
     );
 
     return tl;
-  };
+  }, [ease, items]);
 
-  useCallback(() => {
+  useLayoutEffect(() => {
     const tl = createTimeline();
     tlRef.current = tl;
 
@@ -114,9 +114,9 @@ const CardNav: React.FC<CardNavProps> = ({
       tl?.kill();
       tlRef.current = null;
     };
-  }, [ease, items]);
+  }, [createTimeline]);
 
-  useCallback(() => {
+  useLayoutEffect(() => {
     const handleResize = () => {
       if (!tlRef.current) return;
 
@@ -141,7 +141,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isExpanded]);
+  }, [isExpanded, createTimeline]);
 
   const toggleMenu = () => {
     const tl = tlRef.current;
