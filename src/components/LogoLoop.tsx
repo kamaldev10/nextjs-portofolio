@@ -55,8 +55,7 @@ const cx = (...parts: Array<string | false | null | undefined>) =>
 
 const useResizeObserver = (
   callback: () => void,
-  elements: Array<React.RefObject<Element | null>>,
-  dependencies: React.DependencyList
+  elements: Array<React.RefObject<Element | null>>
 ) => {
   useEffect(() => {
     if (!window.ResizeObserver) {
@@ -78,7 +77,7 @@ const useResizeObserver = (
     return () => {
       observers.forEach((observer) => observer?.disconnect());
     };
-  }, dependencies);
+  }, [callback, ...elements.map((el) => el.current)]);
 };
 
 const useImageLoader = (
@@ -236,13 +235,9 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           ANIMATION_CONFIG.COPY_HEADROOM;
         setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
       }
-    }, [logos, gap, logoHeight]);
+    }, []);
 
-    useResizeObserver(
-      updateDimensions,
-      [containerRef, seqRef],
-      [logos, gap, logoHeight]
-    );
+    useResizeObserver(updateDimensions, [containerRef, seqRef]);
 
     useImageLoader(seqRef, updateDimensions);
 
@@ -361,7 +356,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           </li>
         );
       },
-      [scaleOnHover]
+      [scaleOnHover, logoHeight]
     );
 
     const logoLists = useMemo(
