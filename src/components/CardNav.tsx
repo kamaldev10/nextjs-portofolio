@@ -104,7 +104,7 @@ const CardNav: React.FC<CardNavProps> = ({
     );
 
     return tl;
-  }, [ease, items]);
+  }, [ease]);
 
   useLayoutEffect(() => {
     const tl = createTimeline();
