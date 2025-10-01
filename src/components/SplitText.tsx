@@ -58,12 +58,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         _rbsplitInstance?: GSAPSplitText;
       };
 
-      if (el._rbsplitInstance) {
-        try {
-          el._rbsplitInstance.revert();
-        } catch (_) {}
-        el._rbsplitInstance = undefined;
-      }
+      el._rbsplitInstance = undefined;
 
       const startPct = (1 - threshold) * 100;
       const marginMatch = /^(-?\d+(?:\.\d+)?)(px|em|rem|%)?$/.exec(rootMargin);
@@ -129,9 +124,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         ScrollTrigger.getAll().forEach((st) => {
           if (st.trigger === el) st.kill();
         });
-        try {
-          splitInstance.revert();
-        } catch (_) {}
+
         el._rbsplitInstance = undefined;
       };
     },
