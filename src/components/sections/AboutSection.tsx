@@ -8,7 +8,7 @@ const AboutSection = () => {
       id="about"
       className="min-h-[calc(100vh-4rem)] text-center py-16 bg-slate-400 dark:bg-gray-900"
     >
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white text-center mb-4 md:mb-8">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white text-center mb-4 md:mb-8">
         About Me
       </h2>
       <div className=" flex flex-col md:flex-row items-center justify-center ">
