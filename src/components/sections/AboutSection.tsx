@@ -1,12 +1,12 @@
 // components/sections/AboutMeSection.tsx
-import Image from "next/image";
 import React from "react";
+import ProfileCard from "../profile-card/ProfileCard";
 
 const AboutSection = () => {
   return (
     <section
       id="about"
-      className="min-h-[calc(100vh-4rem)] text-center py-16 mt-16 bg-slate-400 dark:bg-gray-900"
+      className="min-h-[calc(100vh-4rem)] text-center py-16 bg-slate-400 dark:bg-gray-900"
     >
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white text-center mb-4 md:mb-8">
         About Me
@@ -40,13 +40,31 @@ const AboutSection = () => {
           </div>
         </div>
         <div className="md:w-1/3 order-1 md:order-2 md: flex justify-center items-center ">
-          <Image
+          {/* <Image
             src="/images/profile.webp"
             alt="Ali Musthafa Kamal"
             width={400}
             height={400}
             className="rounded-2xl shadow-lg object-cover w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-full"
             priority
+          /> */}
+
+          <ProfileCard
+            imageSrc="/images/profile.webp"
+            altText="Ali Musthafa Kamal Photo"
+            captionText="Ali Musthafa Kamal"
+            containerHeight="400px"
+            containerWidth="300px"
+            imageHeight="400px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={false}
+            overlayContent={
+              <p className="tilted-card-demo-text">Ali Musthafa Kamal</p>
+            }
           />
         </div>
       </div>
