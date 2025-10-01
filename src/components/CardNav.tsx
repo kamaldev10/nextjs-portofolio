@@ -65,7 +65,7 @@ const CardNav: React.FC<CardNavProps> = ({
         contentEl.style.position = "static";
         contentEl.style.height = "auto";
 
-        contentEl.offsetHeight;
+        void contentEl.offsetHeight;
 
         const topBar = 60;
         const padding = 16;
