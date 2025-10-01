@@ -27,14 +27,12 @@ const Navbar = () => {
   return (
     <nav className="bg-slate-200 shadow-sm dark:bg-gray-900 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-2">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-end md:justify-center h-16 items-center">
           {/* Logo / Nama */}
-          <div className=" flex items-center">
-            <ThemeToggle />
-          </div>
+          <div className=" flex items-center">{/* <ThemeToggle /> */}</div>
 
           {/* Navigasi Desktop */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => {
               const IconComponent = link.icon; // Ambil komponen ikon dari object link
               return (
@@ -59,7 +57,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="-mr-2 flex items-center md:hidden">
+          <div className="-mr-2 flex items-center md:hidden ">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
