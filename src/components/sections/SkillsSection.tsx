@@ -1,5 +1,4 @@
 // components/sections/SkillsSection.tsx
-import Image from "next/image";
 import React from "react";
 import LogoLoop from "../LogoLoop";
 
