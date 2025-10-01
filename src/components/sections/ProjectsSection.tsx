@@ -8,7 +8,10 @@ import ProjectCard from "../projects/ProjectCard";
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-12 md:py-16  overflow-hidden">
+    <section
+      id="projects"
+      className="py-12 md:py-16 overflow-hidden dark:bg-gray-900 shadow-2xl inset-shadow-2xl shadow-gray-600"
+    >
       <div className=" mx-auto px-10">
         {/* Header Section tidak berubah */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
