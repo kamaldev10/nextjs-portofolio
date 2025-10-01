@@ -177,6 +177,7 @@ const TextType = ({
     initialDelay,
     isVisible,
     reverseMode,
+    getRandomSpeed,
     variableSpeed,
     onSentenceComplete,
   ]);
