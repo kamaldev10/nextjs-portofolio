@@ -3,7 +3,6 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { GoArrowUpRight } from "react-icons/go";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 type CardNavLink = {
@@ -115,7 +114,7 @@ const CardNav: React.FC<CardNavProps> = ({
       tl?.kill();
       tlRef.current = null;
     };
-  }, [ease, items]);
+  }, [ease, items, createTimeline]);
 
   useLayoutEffect(() => {
     const handleResize = () => {
