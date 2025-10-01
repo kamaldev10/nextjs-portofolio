@@ -28,11 +28,15 @@ const HeroSection = () => {
       bgColor: "#0D0716",
       textColor: "#fff",
       links: [
-        // { label: "Featured", ariaLabel: "Featured Projects" },
         {
-          label: "portofolio",
-          ariaLabel: "Project Case Studies",
-          href: "/projects",
+          label: "Judi Guard",
+          ariaLabel: "Judi Guard",
+          href: "/projects/judi-guard",
+        },
+        {
+          label: "School Dashboard",
+          ariaLabel: "School Dashboard",
+          href: "/projects/school-dashboard",
         },
       ],
     },
@@ -165,7 +169,7 @@ const HeroSection = () => {
             />
             <HeroButton
               label="Contact"
-              svgPath="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+              svgPath="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"
               onClick={handleNavigateContact}
             />
           </div>
