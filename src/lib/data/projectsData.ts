@@ -64,12 +64,48 @@ export const projects: Project[] = [
       "Hugging Face Transformers",
     ],
     repoUrl: "https://github.com/kamaldev10/judi-guard-app",
-    liveUrl: "https://judiguard.id",
+    liveUrl: "https://judiguard.vercel.app",
     role: "Full-stack Developer",
     year: 2025,
   },
   {
     id: "2",
+    slug: "school-dashboard",
+    title: "School Management Dashboard ",
+    description:
+      "Aplikasi ini merupakan aplikasi yang dirancang dan dikembangkan dengan tujuan untuk memanajemen sekolah seperti siswa, kelas, dan keuangan.",
+    longDescription: [
+      "Sebuah aplikasi dashboard modern yang dirancang untuk membantu administrasi TK Melati Tranita dalam mengelola data siswa dan keuangan sekolah secara efisien.",
+      "Aplikasi ini dibangun dengan tumpukan teknologi modern untuk memastikan performa, keamanan, dan kemudahan penggunaan.",
+    ],
+    thumbnailImage:
+      "/images/projects/school-dashboard/school-dashboard-thumbnail.webp",
+    mobileImage: "/images/projects/school-dashboard/mobile-view/1.webp",
+    desktopImage: "/images/projects/school-dashboard/desktop-view/4.webp",
+    mobileImages: [
+      "/images/projects/school-dashboard/mobile-view/1.webp",
+      "/images/projects/school-dashboard/mobile-view/2.webp",
+      "/images/projects/school-dashboard/mobile-view/3.webp",
+      "/images/projects/school-dashboard/mobile-view/4.webp",
+    ],
+    desktopImages: [
+      "/images/projects/school-dashboard/desktop-view/1.webp",
+      "/images/projects/school-dashboard/desktop-view/2.webp",
+      "/images/projects/school-dashboard/desktop-view/3.webp",
+      "/images/projects/school-dashboard/desktop-view/4.webp",
+      "/images/projects/school-dashboard/desktop-view/5.webp",
+      "/images/projects/school-dashboard/desktop-view/6.webp",
+      "/images/projects/school-dashboard/desktop-view/7.webp",
+      "/images/projects/school-dashboard/desktop-view/8.webp",
+    ],
+    tags: ["Next.js", "Tailwind CSS", "Shadcn", "Postgresql"],
+    repoUrl: "https://github.com/kamaldev10/dashboard-sekolah.git",
+    liveUrl: "https://sim-tk-melati-tranita.vercel.app/",
+    role: "Full-stack Developer",
+    year: 2025,
+  },
+  {
+    id: "3",
     slug: "to-talky-app",
     title: "To Talky App",
     description:
@@ -105,7 +141,7 @@ export const projects: Project[] = [
     year: 2025,
   },
   {
-    id: "3",
+    id: "4",
     slug: "biteback",
     title: "Biteback",
     description:
@@ -135,7 +171,7 @@ export const projects: Project[] = [
     year: 2024,
   },
   {
-    id: "4",
+    id: "5",
     slug: "binar-belajar",
     title: "MOOC - Binar Belajar",
     description:
@@ -164,7 +200,7 @@ export const projects: Project[] = [
     year: 2023,
   },
   {
-    id: "5",
+    id: "6",
     slug: "dicoding-story-app",
     title: "Dicoding Story App",
     description:
@@ -192,7 +228,7 @@ export const projects: Project[] = [
     year: 2025,
   },
   {
-    id: "6",
+    id: "7",
     slug: "movie-list",
     title: "Movie List",
     description:
@@ -215,5 +251,4 @@ export const projects: Project[] = [
     role: "Front End Developer",
     year: 2023,
   },
-  // Tambahkan lebih banyak proyek sesuai kebutuhan Anda
 ];
