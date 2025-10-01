@@ -1,16 +1,15 @@
-// app/layout.tsx
-import "./globals.css"; // Pastikan ini ada dan diimpor
+import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ConditionalNavbar from "@/components/ConditionalNavbar";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ali Musthafa Kamal - Portfolio",
+  title: "Welcome to Ali Musthafa Kamal Website !!!",
   description: "FullStack Developer, Front End Developer, Back end Developer",
   keywords: [
     "portfolio",
@@ -28,13 +27,13 @@ export const metadata: Metadata = {
     siteName: "Ali Musthafa Kamal - Portfolio",
     images: [
       {
-        url: "/images/og-image.png", // Gambar untuk social media preview (buat di public/images)
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Ali Musthafa Kamal Portfolio",
       },
     ],
-    locale: "Riau_Ind",
+    locale: "id_ID",
     type: "website",
   },
 };
@@ -45,18 +44,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth " suppressHydrationWarning>
-      <body
-        className={`${inter.className} antialiased 
-        `}
-      >
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <ConditionalNavbar />
           <main className="min-h-screen">{children}</main>
           <Footer />
         </ThemeProvider>
