@@ -11,7 +11,7 @@ import { FaProjectDiagram } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { LuPanelBottomClose, LuPanelTopClose } from "react-icons/lu";
 
-import ThemeToggle from "./ThemeToggle";
+// import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
