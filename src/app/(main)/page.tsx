@@ -5,6 +5,7 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import CertificatesSection from "@/components/sections/CertificateSection";
 import HeroSection from "@/components/sections/HeroSection";
+import RollingGallery from "@/components/RollingGallery";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <AboutSection />
       <CertificatesSection />
       <ProjectsSection />
+      <RollingGallery autoplay={true} pauseOnHover={true} />
     </div>
   );
 }
