@@ -6,64 +6,96 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="min-h-[calc(100vh-4rem)] text-center py-16 bg-slate-400 dark:bg-gray-900"
+      className="min-h-[calc(100vh-4rem)] text-center py-16 bg-slate-50 dark:bg-gray-900 transition-colors duration-300"
     >
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white text-center mb-4 md:mb-8">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white text-center mb-8 md:mb-12">
         About Me
       </h2>
-      <div className=" flex flex-col md:flex-row items-center justify-center ">
-        <div className="md:w-1/2 order-2 md:order-1 mt-8 md:mt-0">
-          <div className="max-w-sm sm:max-w-2xl mx-5 sm:mx-auto text-xs sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify space-y-4 ">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-12 px-6 max-w-7xl mx-auto">
+        {/* Text Content */}
+        <div className="md:w-3/5 order-2 md:order-1">
+          <div className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify space-y-6">
             <p>
-              I am an Information Systems student from the University of Riau.
-              During college, I was active in the Himalkom organization, Mapala
-              and participated in the Merdeka Belajar Kampus Merdeka program at
-              Binar Academy with a front-end javascript field that honed my Web
-              Development and Soft Skills skills. In the program, I studied tech
-              stacks related to web development and developed my skills by
-              collaborating with the backend and building SPA applications using
-              React + vite.
+              I am a <strong>Full-Stack Developer</strong> and Information
+              Systems student at
+              <strong>Riau University</strong>, driven by a passion for building
+              scalable, user-centric digital solutions. My journey is defined by
+              a continuous loop of learning and implementing modern technologies
+              to solve real-world problems.
             </p>
+
             <p>
-              Currently, I am participating in the Dicoding Camp by DBS
-              Foundation program in the front end and back end fields for 6
-              months. My main responsibilities include building Fullstack with
-              the MERN stack. An achievement that I am proud of is successfully
-              building a portfolio on github that shows my abilities in the
-              field of web development. In the future, I want to continue to
-              develop in the field of web development and contribute to the
-              development of applications/products that your company produces. I
-              am interested in this position because it is in line with my
-              career vision, and I am sure I can provide added value to your
-              team. Thank you.
+              With an extensive background in intensive bootcamps—most recently
+              completing the{" "}
+              <strong>Dicoding Full-Stack Developer (2026)</strong>,{" "}
+              <strong>Dicoding Full-Stack Developer (2025)</strong> and{" "}
+              <strong>Binar Academy Frontend Developer (2023)</strong>. I have
+              mastered the <strong>MERN Stack</strong> and{" "}
+              <strong>Next.js</strong>. I specialize in creating robust
+              applications that aren&apos;t just functional, but also
+              maintainable through{" "}
+              <strong>Automated Testing (Cypress/Cucumber/Vitest)</strong> and
+              clean architecture.
             </p>
+
+            <p>
+              Beyond coding, my leadership as the member of an environmental
+              Organizations{" "}
+              <strong>
+                (KPA EMC<sup>2</sup>)
+              </strong>{" "}
+              and my active involvement in student organizations like{" "}
+              <strong>Himalkom FMIPA UNRI</strong> and{" "}
+              <strong>FORMADIKSI UNRI</strong> have honed my ability to
+              collaborate in fast-paced team environments. I bridge the gap
+              between complex backend logic and intuitive UI/UX design, ensuring
+              every product I touch provides maximum value.
+            </p>
+
+            <div className="pt-4 grid grid-cols-2 gap-4 text-left">
+              <div>
+                <h4 className="font-bold text-gray-900 dark:text-white mb-2">
+                  Core Tech
+                </h4>
+                <ul className="list-disc list-inside text-sm opacity-80">
+                  <li>MERN Stack & Next.js</li>
+                  <li>Automated Testing (BDD)</li>
+                  <li>RESTful API Design</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 dark:text-white mb-2">
+                  Extended Skills
+                </h4>
+                <ul className="list-disc list-inside text-sm opacity-80">
+                  <li>Social Media Design (Canva)</li>
+                  <li>UI/UX Design (Figma)</li>
+                  <li>Cloud Deployment (Docker)</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="md:w-1/3 order-1 md:order-2 md: flex justify-center items-center ">
-          {/* <Image
-            src="/images/profile.webp"
-            alt="Ali Musthafa Kamal"
-            width={400}
-            height={400}
-            className="rounded-2xl shadow-lg object-cover w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-full"
-            priority
-          /> */}
 
+        {/* Profile Card / Image */}
+        <div className="md:w-2/5 order-1 md:order-2 flex justify-center items-center">
           <ProfileCard
             imageSrc="/images/profile.webp"
             altText="Ali Musthafa Kamal Photo"
             captionText="Ali Musthafa Kamal"
-            containerHeight="400px"
-            containerWidth="300px"
-            imageHeight="400px"
-            imageWidth="300px"
-            rotateAmplitude={12}
-            scaleOnHover={1.2}
+            containerHeight="420px"
+            containerWidth="320px"
+            imageHeight="420px"
+            imageWidth="320px"
+            rotateAmplitude={10}
+            scaleOnHover={1.05}
             showMobileWarning={false}
             showTooltip={true}
             displayOverlayContent={false}
             overlayContent={
-              <p className="tilted-card-demo-text">Ali Musthafa Kamal</p>
+              <p className="tilted-card-demo-text font-bold text-white">
+                Full-Stack Developer
+              </p>
             }
           />
         </div>
