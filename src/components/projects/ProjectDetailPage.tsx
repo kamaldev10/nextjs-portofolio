@@ -18,7 +18,7 @@ export default function ProjectDetailPage({ project }: { project: Project }) {
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 md:p-12">
       <Link
         href="/projects"
-        className="inline-flex items-center  dark:text-indigo-400 hover:underline mb-6"
+        className="inline-flex items-center dark:text-indigo-400 mb-6 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full px-3 py-3 transition-colors duration-300"
       >
         <FaArrowLeft className="me-2 sm:me-3" /> Back
       </Link>
@@ -32,7 +32,7 @@ export default function ProjectDetailPage({ project }: { project: Project }) {
 
       {(project.mobileImage || project.desktopImage) && (
         <Tabs
-          defaultValue={project.mobileImage ? "mobile" : "desktop"}
+          defaultValue={project.desktopImage ? "desktop" : "mobile"}
           className="mb-10"
         >
           <TabsList className="flex space-x-2">
@@ -43,23 +43,6 @@ export default function ProjectDetailPage({ project }: { project: Project }) {
               <TabsTrigger value="desktop">🖥️ Desktop View</TabsTrigger>
             )}
           </TabsList>
-
-          {project.mobileImage && (
-            <TabsContent value="mobile">
-              <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-lg overflow-hidden my-4">
-                <Image
-                  onClick={() => {
-                    setZoomSrc(project.mobileImage!);
-                    setZoomOpen(true);
-                  }}
-                  src={project.mobileImage}
-                  alt={`${project.title} - Mobile`}
-                  fill
-                  className="object-contain cursor-zoom-in"
-                />
-              </div>
-            </TabsContent>
-          )}
 
           {project.desktopImage && (
             <TabsContent value="desktop">
@@ -73,6 +56,23 @@ export default function ProjectDetailPage({ project }: { project: Project }) {
                   alt={`${project.title} - Desktop`}
                   fill
                   className="object-cover"
+                />
+              </div>
+            </TabsContent>
+          )}
+
+          {project.mobileImage && (
+            <TabsContent value="mobile">
+              <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-lg overflow-hidden my-4">
+                <Image
+                  onClick={() => {
+                    setZoomSrc(project.mobileImage!);
+                    setZoomOpen(true);
+                  }}
+                  src={project.mobileImage}
+                  alt={`${project.title} - Mobile`}
+                  fill
+                  className="object-contain cursor-zoom-in"
                 />
               </div>
             </TabsContent>
