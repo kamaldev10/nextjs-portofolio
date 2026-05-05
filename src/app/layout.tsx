@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Ali Musthafa Kamal | Fullstack Web Developer",
   description:
-    "Portfolio of Ali Musthafa Kamal – Fullstack Web Developer specializing in Next.js, React, and Tailwind CSS.",
+    "Portfolio of Ali Musthafa Kamal – Fullstack Web Developer specializing in MERN Stack and Next.js",
   keywords: [
     "Ali Musthafa Kamal",
     "portfolio",
@@ -75,7 +75,7 @@ export default function RootLayout({
       <body className={`${montserrat.className} antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
