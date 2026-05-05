@@ -21,6 +21,48 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "1",
+    slug: "judi-guard-v2",
+    title: "Judi Guard V2",
+    description:
+      "aplikasi web berbasis AI yang untuk menganalisis komentar yang mengandung unsur judi online pada platform YouTube.",
+    longDescription: [
+      "Judi Guard adalah aplikasi web berbasis AI yang dirancang untuk mendeteksi dan menganalisis komentar yang mengandung unsur judi online pada platform seperti YouTube. Dengan teknologi cerdas, Judi Guard memberikan solusi cepat, akurat, dan efisien untuk membantu kreator konten dan manajer komunitas menjaga ruang interaksi mereka tetap bersih dan aman dari konten berbahaya.",
+      "Dengan fitur utama yaitu analisis komentar berbasis AI, integrasi Youtube API, Otentikasi pengguna yang aman, dashboard yang interaktif dan penangannan eror yang tangguh. Dengan fitur utama yang disajikan, menjadikan User Experience yang interaktif dan menarik",
+      "Aplikasi ini merupakan pengembangan lanjutan dari Judi Guard V1 dengan penambahan fitur-fitur dashboard, yakni input dan peminilah recent video untuk di analisis, moderasi komentar, konfigurasi (whitelsit & blacklist) dan riwayat analisis",
+    ],
+    thumbnailImage:
+      "/images/projects/judi-guard-v2/judiguard-v2-thumbnail.webp",
+    mobileImage: "",
+    desktopImage: "/images/projects/judi-guard-v2/desktop-view/5.webp",
+    mobileImages: [],
+    desktopImages: [
+      "/images/projects/judi-guard-v2/desktop-view/1.webp",
+      "/images/projects/judi-guard-v2/desktop-view/2.webp",
+      "/images/projects/judi-guard-v2/desktop-view/3.webp",
+      "/images/projects/judi-guard-v2/desktop-view/4.webp",
+      "/images/projects/judi-guard-v2/desktop-view/5.webp",
+      "/images/projects/judi-guard-v2/desktop-view/6.webp",
+      "/images/projects/judi-guard-v2/desktop-view/7.webp",
+      "/images/projects/judi-guard-v2/desktop-view/8.webp",
+      "/images/projects/judi-guard-v2/desktop-view/9.webp",
+      "/images/projects/judi-guard-v2/desktop-view/10.webp",
+    ],
+    tags: [
+      "React.js",
+      "Shadcn/Tailwind CSS",
+      "MongoDB",
+      "Express.js",
+      "Cypress",
+      "Cucumber",
+      "Vitest",
+    ],
+    repoUrl: "https://github.com/kamaldev10/judi-guard.git",
+    liveUrl: "https://judiguard.vercel.app",
+    role: "Web Developer",
+    year: 2026,
+  },
+  {
+    id: "2",
     slug: "judi-guard",
     title: "Judi Guard",
     description:
@@ -63,13 +105,13 @@ export const projects: Project[] = [
       "Tensor Flow",
       "Hugging Face Transformers",
     ],
-    repoUrl: "https://github.com/kamaldev10/judi-guard-app",
+    repoUrl: "https://github.com/kamaldev10/judi-guard",
     liveUrl: "https://judiguard.vercel.app",
     role: "Full-stack Developer",
     year: 2025,
   },
   {
-    id: "2",
+    id: "3",
     slug: "school-dashboard",
     title: "School Management Dashboard ",
     description:
@@ -100,14 +142,14 @@ export const projects: Project[] = [
     ],
     tags: ["Next.js", "Tailwind CSS", "Shadcn", "Postgresql"],
     repoUrl: "https://github.com/kamaldev10/dashboard-sekolah.git",
-    liveUrl: "https://sim-tk-melati-tranita.vercel.app/",
-    role: "Full-stack Developer",
+    liveUrl: "https://sim-keuangan-sekolah.vercel.app/",
+    role: "Full Stack Developer",
     year: 2025,
   },
   {
-    id: "3",
-    slug: "to-talky-app",
-    title: "To Talky App",
+    id: "4",
+    slug: "talky-app",
+    title: "Talky App",
     description:
       " aplikasi berbasis web yang dikembangkan menggunakan React + Vite dengan pendekatan mobile-first. Aplikasi ini dirancang untuk membantu anak dengan berkebutuhan khusus untuk belajar melalui suara dan gambar.",
     longDescription: [
@@ -130,9 +172,9 @@ export const projects: Project[] = [
       "/images/projects/to-talky/mobile-view/10.webp",
     ],
     desktopImages: [
-      "/images/projects/to-talky/desktop-view/1.webp",
-      "/images/projects/to-talky/desktop-view/2.webp",
-      "/images/projects/to-talky/desktop-view/3.webp",
+      // "/images/projects/to-talky/desktop-view/1.webp",
+      // "/images/projects/to-talky/desktop-view/2.webp",
+      // "/images/projects/to-talky/desktop-view/3.webp",
     ],
     tags: ["React", "Vite", "Tailwind Css", "Mobile-first"],
     repoUrl: "https://github.com/kamaldev10/Talky-app.git",
@@ -141,7 +183,7 @@ export const projects: Project[] = [
     year: 2025,
   },
   {
-    id: "4",
+    id: "5",
     slug: "biteback",
     title: "Biteback",
     description:
@@ -171,7 +213,7 @@ export const projects: Project[] = [
     year: 2024,
   },
   {
-    id: "5",
+    id: "6",
     slug: "binar-belajar",
     title: "MOOC - Binar Belajar",
     description:
@@ -200,7 +242,7 @@ export const projects: Project[] = [
     year: 2023,
   },
   {
-    id: "6",
+    id: "7",
     slug: "dicoding-story-app",
     title: "Dicoding Story App",
     description:
@@ -228,7 +270,7 @@ export const projects: Project[] = [
     year: 2025,
   },
   {
-    id: "7",
+    id: "8",
     slug: "movie-list",
     title: "Movie List",
     description:

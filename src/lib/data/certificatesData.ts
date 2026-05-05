@@ -6,13 +6,21 @@ export interface Certificate {
   issuedBy: string;
   issueDate: string;
   credentialId?: string;
-  credentialUrl: string;
+  credentialUrl?: string | undefined;
   image: string; // Path to the brand logo, e.g., '/images/certificates/meta.png'
 }
 
 // NEW: A separate, flat list for featured certificates on the homepage section.
 // This gives you full control over which 3 certificates to feature.
 export const featuredCertificates: Certificate[] = [
+  {
+    title: "Certificate of Completion - Dicoding Full-Stack Developer (2026)",
+    issuedBy: "Dicoding Indonesia",
+    issueDate: "July 07, 2025",
+    credentialId: "CC25/GRAD/XXV-07/FC844D5Y0671",
+    credentialUrl: "",
+    image: "/images/certificates/dicoding/completion.jpg",
+  },
   {
     title: "Belajar Pengembangan Web Intermediate",
     issuedBy: "Dicoding Indonesia",
@@ -77,6 +85,14 @@ export const featuredCertificates: Certificate[] = [
 // This will be used on the main /certificates page.
 export const categorizedCertificates: Record<string, Certificate[]> = {
   "Dicoding Indonesia": [
+    {
+      title: "Certificate of Completion - Dicoding Full-Stack Developer (2026)",
+      issuedBy: "Dicoding Indonesia",
+      issueDate: "July 07, 2025",
+      credentialId: "CC25/GRAD/XXV-07/FC844D5Y0671",
+      // credentialUrl: "",
+      image: "/images/certificates/dicoding/completion.jpg",
+    },
     {
       title: "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software",
       issuedBy: "Dicoding Indonesia",
@@ -164,6 +180,14 @@ export const categorizedCertificates: Record<string, Certificate[]> = {
       credentialId: "JLX19YNJ5P72",
       credentialUrl: "https://www.dicoding.com/certificates/JLX19YNJ5P72",
       image: "/images/certificates/dicoding/11.png",
+    },
+    {
+      title: "English for Business Communication",
+      issuedBy: "Dicoding Indonesia",
+      issueDate: "June 10, 2025",
+      credentialId: "TBI-DAGO/CORP/12171/2025 ",
+      credentialUrl: "",
+      image: "/images/certificates/dicoding/12.jpg",
     },
   ],
   "Binar Academy": [
