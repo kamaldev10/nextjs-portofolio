@@ -1,6 +1,6 @@
 {
   "name": "web-portofolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack --port 3002",
@@ -24,7 +24,7 @@
     "next": "15.3.4",
     "next-themes": "^0.4.6",
     "ogl": "^1.0.11",
-    "react": "^19.0.0",
+    "react": "^19.2.3",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "styled-components": "^6.1.19",
