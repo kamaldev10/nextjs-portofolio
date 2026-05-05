@@ -50,14 +50,16 @@ const CertificateCard: React.FC<CertificateCardProps> = ({ certificate }) => {
 
         {/* Tombol Aksi (CTA) */}
         <div className="mt-auto pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
-          <Link
-            href={certificate.credentialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold  dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
-          >
-            Credentials <FaExternalLinkAlt size={12} />
-          </Link>
+          {certificate.credentialUrl && (
+            <Link
+              href={certificate.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold  dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+            >
+              Credentials <FaExternalLinkAlt size={12} />
+            </Link>
+          )}
           {certificate.credentialId && (
             <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
               ID: {certificate.credentialId}
