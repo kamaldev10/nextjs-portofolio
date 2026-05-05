@@ -1,5 +1,5 @@
 // app/contact/page.tsx
-"use client"; // --- PENTING: Tandai sebagai Client Component ---
+"use client";
 
 import { useState } from "react";
 import {
@@ -24,7 +24,7 @@ const ContactPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -48,14 +48,14 @@ const ContactPage = () => {
 
       if (response.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", message: "" }); // Bersihkan form
+        setFormData({ name: "", email: "", message: "" });
       } else {
         const data = await response.json();
         setErrorMessage(
           data.errors
             ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
               data.errors.map((err: any) => err.message).join(", ")
-            : "Terjadi kesalahan."
+            : "Terjadi kesalahan.",
         );
         setStatus("error");
       }
