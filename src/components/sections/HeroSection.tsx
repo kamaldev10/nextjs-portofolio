@@ -133,7 +133,7 @@ const HeroSection = () => {
           </div>
 
           <SplitText
-            text="Welcome, Dude!"
+            text="Welcome to My Portofolio!"
             className="text-6xl sm:text-7xl font-extrabold text-center"
             delay={100}
             duration={0.6}
@@ -149,9 +149,8 @@ const HeroSection = () => {
 
           <TextType
             text={[
-              "I'm a Fullstack Developer",
-              "building intuitive and efficient web experiences",
-              "Happy coding!",
+              "I'm a Web Developer specializing in Frontend Development,",
+              "building scalable, responsive, intuitive and efficient web experiences",
             ]}
             typingSpeed={75}
             pauseDuration={1500}
