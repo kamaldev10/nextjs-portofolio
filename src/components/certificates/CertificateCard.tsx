@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaExternalLinkAlt, FaAward } from "react-icons/fa";
-import { Certificate } from "@/lib/data/certificatesData"; // Impor tipe data
+import { Certificate } from "@/lib/data/certificates-data"; // Impor tipe data
 import ImageZoomModal from "../ui/ImageZoomModal";
 
 interface CertificateCardProps {

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-import { featuredCertificates } from "@/lib/data/certificatesData";
+import { featuredCertificates } from "@/lib/data/certificates-data";
 import MotionCarousel from "../ui/MotionCarousel";
 import FeaturedCertificateCard from "../certificates/FeaturedCertificateCard";
 
@@ -12,7 +12,7 @@ const CertificatesSection = () => {
       className="py-8 md:py-12 bg-slate-400 dark:bg-gray-900 overflow-hidden"
     >
       <div className=" mx-auto px-10">
-        {/* Header Section tidak berubah */}
+        {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 sm:mb-10">
           <div className="mb-4 md:mb-0">
             <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
@@ -32,7 +32,6 @@ const CertificatesSection = () => {
         </div>
       </div>
 
-      {/* Gunakan MotionCarousel di sini */}
       <div className="w-full">
         <MotionCarousel
           className="container mx-auto px-4"

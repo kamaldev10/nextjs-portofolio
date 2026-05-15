@@ -11,7 +11,7 @@ import Image from "next/image";
 const DEFAULT_IMAGES = [
   "/images/gallery/1.png",
   "/images/gallery/2.jpeg",
-  "/images/gallery/5.png",
+  "/images/gallery/4.png",
   "/images/gallery/7.png",
   "/images/gallery/8.png",
   "/images/gallery/9.png",

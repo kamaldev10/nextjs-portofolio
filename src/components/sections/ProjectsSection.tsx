@@ -3,7 +3,7 @@ import Link from "next/link"; // Untuk tombol "View All Projects"
 import React from "react"; // Penting: Tambahkan import React
 import { FaArrowRight } from "react-icons/fa";
 import MotionCarousel from "../ui/MotionCarousel";
-import { projects } from "@/lib/data/projectsData";
+import { projects } from "@/lib/data/projects-data";
 import ProjectCard from "../projects/ProjectCard";
 
 const ProjectsSection = () => {

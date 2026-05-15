@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GallerySlider from "@/components/ui/GallerySlider";
-import type { Project } from "@/lib/data/projectsData";
+import type { Project } from "@/lib/data/projects-data";
 import ImageZoomModal from "@/components/ui/ImageZoomModal";
 import { useState } from "react";
 
@@ -15,7 +15,7 @@ export default function ProjectDetailPage({ project }: { project: Project }) {
   const [zoomOpen, setZoomOpen] = useState(false);
   const [zoomSrc, setZoomSrc] = useState("");
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 md:p-12">
+    <div className="bg-white dark:bg-gray-800 shadow-xl p-6 md:p-12">
       <Link
         href="/projects"
         className="inline-flex items-center dark:text-indigo-400 mb-6 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full px-3 py-3 transition-colors duration-300"
@@ -56,6 +56,7 @@ export default function ProjectDetailPage({ project }: { project: Project }) {
                   alt={`${project.title} - Desktop`}
                   fill
                   className="object-cover"
+                  loading="eager"
                 />
               </div>
             </TabsContent>

@@ -29,6 +29,11 @@ const HeroSection = () => {
       textColor: "#fff",
       links: [
         {
+          label: "Judi Guard ver.2",
+          ariaLabel: "Judi Guard ver.2",
+          href: "/projects/judi-guard-v2",
+        },
+        {
           label: "Judi Guard",
           ariaLabel: "Judi Guard",
           href: "/projects/judi-guard",

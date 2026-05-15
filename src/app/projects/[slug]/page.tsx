@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import ProjectDetailPage from "@/components/projects/ProjectDetailPage";
-import { projects } from "@/lib/data/projectsData";
+import { projects } from "@/lib/data/projects-data";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -10,7 +10,7 @@ type PageProps = {
 
 // 🧠 SEO metadata generator (asynchronous, modern)
 export async function generateMetadata(
-  props: Pick<PageProps, "params">
+  props: Pick<PageProps, "params">,
 ): Promise<Metadata> {
   const { slug } = await props.params;
 

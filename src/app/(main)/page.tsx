@@ -13,8 +13,8 @@ export default function HomePage() {
       <HeroSection />
       <SkillsSection />
       <AboutSection />
-      <CertificatesSection />
       <ProjectsSection />
+      <CertificatesSection />
       <RollingGallery autoplay={true} pauseOnHover={true} />
     </div>
   );

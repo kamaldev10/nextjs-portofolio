@@ -64,8 +64,6 @@ const SkillsSection = () => {
           gap={62}
           pauseOnHover
           scaleOnHover
-          fadeOut
-          fadeOutColor="#1e293b"
           ariaLabel="Skill Logo"
           className="py-16 sm:py-20 "
         />

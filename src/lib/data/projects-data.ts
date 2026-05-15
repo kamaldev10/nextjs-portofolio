@@ -112,8 +112,8 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    slug: "school-dashboard",
-    title: "School Management Dashboard ",
+    slug: "school-finance-dashboard",
+    title: "School Finance Management Dashboard ",
     description:
       "Aplikasi ini merupakan aplikasi yang dirancang dan dikembangkan dengan tujuan untuk memanajemen sekolah seperti siswa, kelas, dan keuangan.",
     longDescription: [

@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { categorizedCertificates } from "@/lib/data/certificatesData";
+import { categorizedCertificates } from "@/lib/data/certificates-data";
 import CertificateCard from "@/components/certificates/CertificateCard";
 
 // SEO Metadata in English
