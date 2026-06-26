@@ -9,7 +9,6 @@ import React, {
 } from 'react';
 
 import { gsap } from 'gsap';
-import ImageZoomModal from '@/components/ui/ImageZoomModal';
 
 // ── Hooks ──────────────────────────────────────────────────────────────────
 
