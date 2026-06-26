@@ -40,7 +40,7 @@ export const typography = {
   caption: 'text-xs text-muted-foreground',
 
   /** Lead — hero sub-copy, larger intro sentences */
-  lead: 'text-xl leading-8 text-muted-foreground',
+  lead: 'text-base sm:text-xl leading-8 text-muted-foreground',
 
   // ── Interactive ──────────────────────────────────────────────────────────
   nav: 'text-sm font-medium tracking-wide',
