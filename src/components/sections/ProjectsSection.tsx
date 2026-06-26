@@ -1,45 +1,54 @@
 // components/sections/ProjectsSection.tsx
-import Link from "next/link"; // Untuk tombol "View All Projects"
-import React from "react"; // Penting: Tambahkan import React
-import { FaArrowRight } from "react-icons/fa";
-import MotionCarousel from "../ui/MotionCarousel";
-import { projects } from "@/lib/data/projects-data";
-import ProjectCard from "../projects/ProjectCard";
+import React from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { typography } from '@/lib/typography';
+import MotionCarousel from '../MotionCarousel';
+import { projects } from '@/lib/data/projects-data';
+import ProjectCard from '../projects/ProjectCard';
 
-const ProjectsSection = () => {
+export default function ProjectsSection() {
+  // mapping hanya 8 projects yang ditampilkan di halaman utama
+  const featuredProjects = projects.slice(0, 8);
   return (
     <section
-      id="projects"
-      className="py-12 md:py-16 overflow-hidden dark:bg-gray-900 shadow-2xl inset-shadow-2xl shadow-gray-600"
+      id='projects'
+      className='py-24 md:py-32 bg-card/30 overflow-hidden'
     >
-      <div className=" mx-auto px-10">
-        {/* Header Section tidak berubah */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
-          <div className="mb-4 md:mb-0">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
+      <div className='max-w-6xl mx-auto px-6'>
+        {/* Header */}
+        <div className='flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14'>
+          <div>
+            <p className={cn(typography.overline, 'mb-3 text-primary')}>Work</p>
+            <h2 className={cn(typography.h1, 'text-foreground')}>
               Featured Projects
             </h2>
-            <p className=" text-xs sm:text-base mt-1 sm:mt-2 text-gray-600 dark:text-gray-300">
-              A glimpse of my amazing and useful project for people.{" "}
+            <div className='mt-4 w-12 h-0.5 bg-primary rounded-full' />
+            <p className={cn(typography.body, 'mt-4 max-w-md')}>
+              A selection of work — scalable, well-tested, and production-ready.
             </p>
           </div>
           <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 font-semibold text-gray-900 dark:text-white hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors group flex-shrink-0"
+            href='/projects'
+            className={cn(
+              typography.button,
+              'inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-200 flex-shrink-0 group',
+            )}
           >
-            View all projects
-            <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+            All projects
+            <ArrowRight className='w-4 h-4 transition-transform duration-200 group-hover:translate-x-1' />
           </Link>
         </div>
       </div>
 
-      {/* Gunakan MotionCarousel di sini */}
-      <div className="w-full">
+      {/* Carousel */}
+      <div className='w-full'>
         <MotionCarousel
-          className="container mx-auto px-4"
-          itemClassName="flex-shrink-0 w-80 md:w-96"
+          className='max-w-6xl mx-auto px-6'
+          itemClassName='flex-shrink-0 w-72 md:w-80'
         >
-          {projects.map((project) => (
+          {featuredProjects.map((project) => (
             <ProjectCard
               key={project.id}
               title={project.title}
@@ -52,6 +61,4 @@ const ProjectsSection = () => {
       </div>
     </section>
   );
-};
-
-export default ProjectsSection;
+}
