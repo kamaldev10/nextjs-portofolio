@@ -1,107 +1,142 @@
-// components/sections/AboutMeSection.tsx
-import React from "react";
-import ProfileCard from "../profile-card/ProfileCard";
+// components/sections/AboutSection.tsx
+import { cn } from '@/lib/utils';
+import { typography } from '@/lib/typography';
+import ProfileCard from '../profile-card/ProfileCard';
 
-const AboutSection = () => {
+const coreTech = [
+  'MERN Stack & Next.js',
+  'Automated Testing (BDD)',
+  'RESTful API Design',
+];
+const extendedSkills = [
+  'UI/UX Design (Figma)',
+  'Social Media Design (Canva)',
+  'Cloud Deployment (Docker)',
+];
+
+export default function AboutSection() {
   return (
-    <section
-      id="about"
-      className="min-h-[calc(100vh-4rem)] text-center py-16 bg-slate-50 dark:bg-gray-900 transition-colors duration-300"
-    >
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white text-center mb-8 md:mb-12">
-        About Me
-      </h2>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-12 px-6 max-w-7xl mx-auto">
-        {/* Text Content */}
-        <div className="md:w-3/5 order-2 md:order-1">
-          <div className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify space-y-6">
-            <p>
-              I am a <strong>Full-Stack Developer</strong> and Information
-              Systems student at
-              <strong>Riau University</strong>, driven by a passion for building
-              scalable, user-centric digital solutions. My journey is defined by
-              a continuous loop of learning and implementing modern technologies
-              to solve real-world problems.
+    <section id='about' className='py-24 md:py-32 bg-card/30'>
+      <div className='max-w-6xl mx-auto px-6'>
+        {/* Section header */}
+        <div className='mb-16'>
+          <p className={cn(typography.overline, 'mb-3 text-primary')}>
+            About me
+          </p>
+          <h2 className={cn(typography.h1, 'text-foreground')}>Who I am</h2>
+          <div className='mt-4 w-12 h-0.5 bg-primary rounded-full' />
+        </div>
+
+        {/* Content grid */}
+        <div className='grid md:grid-cols-5 gap-12 lg:gap-20 items-center'>
+          {/* Profile card */}
+          <div className='md:col-span-2 flex justify-center md:justify-start'>
+            <div className='relative'>
+              {/* Glow ring behind card */}
+              <div
+                aria-hidden
+                className='absolute inset-0 rounded-2xl bg-primary/10 blur-2xl scale-105'
+              />
+              <ProfileCard
+                imageSrc='/images/profile.jpg'
+                altText='Ali Musthafa Kamal'
+                captionText='Ali Musthafa Kamal'
+                containerHeight='420px'
+                containerWidth='300px'
+                imageHeight='420px'
+                imageWidth='300px'
+                rotateAmplitude={8}
+                scaleOnHover={1.04}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={false}
+              />
+            </div>
+          </div>
+
+          {/* Text content */}
+          <div className='md:col-span-3 space-y-6'>
+            <p className={cn(typography.bodyLg)}>
+              I&apos;m a{' '}
+              <strong className='text-foreground font-semibold'>
+                Full-Stack Developer
+              </strong>{' '}
+              and Computer Science Bachelor&apos;s Degree at{' '}
+              <strong className='text-foreground font-semibold'>
+                University of Riau
+              </strong>
+              , passionate about building scalable, user-centric digital
+              solutions.
             </p>
 
-            <p>
-              With an extensive background in intensive bootcamps—most recently
-              completing the{" "}
-              <strong>Dicoding Full-Stack Developer (2026)</strong>,{" "}
-              <strong>Dicoding Full-Stack Developer (2025)</strong> and{" "}
-              <strong>Binar Academy Frontend Developer (2023)</strong>. I have
-              mastered the <strong>MERN Stack</strong> and{" "}
-              <strong>Next.js</strong>. I specialize in creating robust
-              applications that aren&apos;t just functional, but also
-              maintainable through{" "}
-              <strong>Automated Testing (Cypress/Cucumber/Vitest)</strong> and
-              clean architecture.
+            <p className={cn(typography.body)}>
+              With hands-on experience from intensive bootcamps — including{' '}
+              <span className='text-foreground/80'>
+                Dicoding Full-Stack Developer (2026)
+              </span>
+              ,{' '}
+              <span className='text-foreground/80'>
+                Dicoding Full-Stack Developer (2025)
+              </span>
+              , and{' '}
+              <span className='text-foreground/80'>
+                Binar Academy Frontend Developer (2024)
+              </span>{' '}
+              — I have mastered the MERN stack and Next.js, specializing in
+              applications that are functional, maintainable, and tested.
             </p>
 
-            <p>
-              Beyond coding, my leadership as the member of an environmental
-              Organizations{" "}
-              <strong>
-                (KPA EMC<sup>2</sup>)
-              </strong>{" "}
-              and my active involvement in student organizations like{" "}
-              <strong>Himalkom FMIPA UNRI</strong> and{" "}
-              <strong>FORMADIKSI UNRI</strong> have honed my ability to
-              collaborate in fast-paced team environments. I bridge the gap
-              between complex backend logic and intuitive UI/UX design, ensuring
-              every product I touch provides maximum value.
+            <p className={cn(typography.body)}>
+              Beyond code, leadership in{' '}
+              <strong className='text-foreground/80'>KPA EMC²</strong> and
+              active involvement in{' '}
+              <strong className='text-foreground/80'>
+                Himalkom FMIPA UNRI
+              </strong>{' '}
+              and{' '}
+              <strong className='text-foreground/80'>FORMADIKSI UNRI</strong>{' '}
+              have sharpened my ability to deliver in collaborative, fast-paced
+              environments.
             </p>
 
-            <div className="pt-4 grid grid-cols-2 gap-4 text-left">
+            {/* Skill lists */}
+            <div className='grid grid-cols-2 gap-6 pt-4 border-t border-border'>
               <div>
-                <h4 className="font-bold text-gray-900 dark:text-white mb-2">
+                <h4 className={cn(typography.h4, 'text-foreground mb-3')}>
                   Core Tech
                 </h4>
-                <ul className="list-disc list-inside text-sm opacity-80">
-                  <li>MERN Stack & Next.js</li>
-                  <li>Automated Testing (BDD)</li>
-                  <li>RESTful API Design</li>
+                <ul className='space-y-1.5'>
+                  {coreTech.map((item) => (
+                    <li
+                      key={item}
+                      className='flex items-center gap-2 text-sm text-muted-foreground'
+                    >
+                      <span className='w-1 h-1 rounded-full bg-primary flex-shrink-0' />
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 dark:text-white mb-2">
+                <h4 className={cn(typography.h4, 'text-foreground mb-3')}>
                   Extended Skills
                 </h4>
-                <ul className="list-disc list-inside text-sm opacity-80">
-                  <li>Social Media Design (Canva)</li>
-                  <li>UI/UX Design (Figma)</li>
-                  <li>Cloud Deployment (Docker)</li>
+                <ul className='space-y-1.5'>
+                  {extendedSkills.map((item) => (
+                    <li
+                      key={item}
+                      className='flex items-center gap-2 text-sm text-muted-foreground'
+                    >
+                      <span className='w-1 h-1 rounded-full bg-accent flex-shrink-0' />
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Profile Card / Image */}
-        <div className="md:w-2/5 order-1 md:order-2 flex justify-center items-center">
-          <ProfileCard
-            imageSrc="/images/profile.webp"
-            altText="Ali Musthafa Kamal Photo"
-            captionText="Ali Musthafa Kamal"
-            containerHeight="420px"
-            containerWidth="320px"
-            imageHeight="420px"
-            imageWidth="320px"
-            rotateAmplitude={10}
-            scaleOnHover={1.05}
-            showMobileWarning={false}
-            showTooltip={true}
-            displayOverlayContent={false}
-            overlayContent={
-              <p className="tilted-card-demo-text font-bold text-white">
-                Full-Stack Developer
-              </p>
-            }
-          />
-        </div>
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}

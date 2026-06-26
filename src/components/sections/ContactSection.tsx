@@ -1,132 +1,206 @@
+'use client';
+
 // components/sections/ContactSection.tsx
-"use client"; // Mungkin ada form input di sini
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+import { typography } from '@/lib/typography';
+import { Send, MapPin, Github } from 'lucide-react';
+import { FaLinkedinIn } from 'react-icons/fa';
+import Link from 'next/link';
 
-import { useState } from "react";
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-const ContactSection = () => {
+const contactMeta = [
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: 'Pekanbaru, Riau — Indonesia',
+  },
+  {
+    icon: Github,
+    label: 'GitHub',
+    value: 'github.com/kamaldev10',
+    href: 'https://github.com/kamaldev10',
+  },
+  {
+    icon: FaLinkedinIn,
+    label: 'LinkedIn',
+    value: 'alimusthafakamal',
+    href: 'https://linkedin.com/in/alimusthafakamal',
+  },
+];
+
+export default function ContactSection() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   });
-  const [status, setStatus] = useState(""); // 'success', 'error', 'submitting'
+  const [status, setStatus] = useState<FormStatus>('idle');
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("submitting");
-
-    // Di sini kamu akan mengirim data form.
-    // Untuk portofolio sederhana, kamu bisa pakai layanan seperti Formspree, Netlify Forms, atau Web3Forms.
-    // Contoh menggunakan Formspree:
+    setStatus('submitting');
     try {
-      const response = await fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
-        // Ganti dengan ID Formspree-mu
-        method: "POST",
+      const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify(formData),
       });
-
       if (response.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", message: "" }); // Bersihkan form
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
       } else {
-        setStatus("error");
+        setStatus('error');
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setStatus("error");
+    } catch {
+      setStatus('error');
     }
   };
 
-  return (
-    <section
-      id="contact"
-      className="flex flex-col md:flex-row items-center justify-center min-h-[calc(100vh-4rem)] py-16 text-center  bg-gray-50 dark:bg-gray-900"
-    >
-      <div className="md:w-1/2 order-2 md:order-1 mt-8 md:mt-0 ms-0 md:ms-5">
-        <div>Location</div>
-      </div>
-      <div className="md:w-1/2 order-1 md:order-2 flex justify-center items-center p-4">
-        <div className="max-w-xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-            Get In Touch
-          </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-            Have a question or want to work together? Feel free to send me a
-            message!
-          </p>
+  const inputBase = cn(
+    'w-full px-4 py-3 rounded-md bg-muted/40 border border-border text-foreground placeholder:text-muted-foreground/60',
+    'focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/60',
+    'transition-all duration-200 text-sm',
+  );
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+  return (
+    <section id='contact' className='py-24 md:py-32 bg-card/30'>
+      <div className='max-w-6xl mx-auto px-6'>
+        {/* Header */}
+        <div className='mb-16'>
+          <p className={cn(typography.overline, 'mb-3 text-primary')}>
+            Contact
+          </p>
+          <h2 className={cn(typography.h1, 'text-foreground')}>Get in touch</h2>
+          <div className='mt-4 w-12 h-0.5 bg-primary rounded-full' />
+        </div>
+
+        {/* Two-column grid */}
+        <div className='grid md:grid-cols-2 gap-12 lg:gap-20'>
+          {/* Left — meta */}
+          <div className='space-y-8'>
+            <p className={cn(typography.bodyLg)}>
+              Have a project in mind or want to collaborate? I&apos;m open to
+              full-time roles, freelance work, and interesting conversations.
+            </p>
+
+            <div className='space-y-5 pt-2'>
+              {contactMeta.map(({ icon: Icon, label, value, href }) => (
+                <div key={label} className='flex items-start gap-4'>
+                  <div className='mt-0.5 p-2 rounded-md border border-border bg-muted/30 text-muted-foreground'>
+                    <Icon className='w-4 h-4' />
+                  </div>
+                  <div>
+                    <p className={cn(typography.caption, 'mb-0.5')}>{label}</p>
+                    {href ? (
+                      <Link
+                        href={href}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='text-sm text-foreground hover:text-primary transition-colors duration-200'
+                      >
+                        {value}
+                      </Link>
+                    ) : (
+                      <p className='text-sm text-foreground'>{value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — form */}
+          <form onSubmit={handleSubmit} className='space-y-4' noValidate>
             <div>
-              <label htmlFor="name" className="sr-only">
+              <label
+                htmlFor='name'
+                className={cn(typography.caption, 'block mb-1.5')}
+              >
                 Name
               </label>
               <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your Name"
+                id='name'
+                type='text'
+                name='name'
+                placeholder='Your name'
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className={inputBase}
               />
             </div>
+
             <div>
-              <label htmlFor="email" className="sr-only">
+              <label
+                htmlFor='email'
+                className={cn(typography.caption, 'block mb-1.5')}
+              >
                 Email
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Your Email"
+                id='email'
+                type='email'
+                name='email'
+                placeholder='you@example.com'
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className={inputBase}
               />
             </div>
+
             <div>
-              <label htmlFor="message" className="sr-only">
+              <label
+                htmlFor='message'
+                className={cn(typography.caption, 'block mb-1.5')}
+              >
                 Message
               </label>
               <textarea
-                id="message"
-                name="message"
-                rows={6}
-                placeholder="Your Message"
+                id='message'
+                name='message'
+                rows={5}
+                placeholder='Tell me about your project...'
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-              ></textarea>
+                className={cn(inputBase, 'resize-none')}
+              />
             </div>
+
             <button
-              type="submit"
-              className="w-full px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={status === "submitting"}
+              type='submit'
+              disabled={status === 'submitting'}
+              className={cn(
+                typography.button,
+                'w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md',
+                'bg-primary text-primary-foreground hover:bg-primary/90',
+                'transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed glow-indigo',
+              )}
             >
-              {status === "submitting" ? "Sending..." : "Send Message"}
+              <Send className='w-4 h-4' />
+              {status === 'submitting' ? 'Sending…' : 'Send Message'}
             </button>
 
-            {status === "success" && (
-              <p className="mt-4 text-green-600 dark:text-green-400">
-                Message sent successfully!
+            {status === 'success' && (
+              <p className='text-sm text-green-400 text-center'>
+                Message sent — I&apos;ll get back to you soon.
               </p>
             )}
-            {status === "error" && (
-              <p className="mt-4 text-red-600 dark:text-red-400">
-                Failed to send message. Please try again.
+            {status === 'error' && (
+              <p className='text-sm text-red-400 text-center'>
+                Something went wrong. Please try again.
               </p>
             )}
           </form>
@@ -134,6 +208,4 @@ const ContactSection = () => {
       </div>
     </section>
   );
-};
-
-export default ContactSection;
+}

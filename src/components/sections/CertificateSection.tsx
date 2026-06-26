@@ -1,41 +1,49 @@
-import React from "react";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
-import { featuredCertificates } from "@/lib/data/certificates-data";
-import MotionCarousel from "../ui/MotionCarousel";
-import FeaturedCertificateCard from "../certificates/FeaturedCertificateCard";
+// components/sections/CertificateSection.tsx
+import React from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { typography } from '@/lib/typography';
+import { featuredCertificates } from '@/lib/data/certificates-data';
+import MotionCarousel from '../MotionCarousel';
+import FeaturedCertificateCard from '../certificates/FeaturedCertificateCard';
 
-const CertificatesSection = () => {
+export default function CertificatesSection() {
   return (
-    <section
-      id="certificates"
-      className="py-8 md:py-12 bg-slate-400 dark:bg-gray-900 overflow-hidden"
-    >
-      <div className=" mx-auto px-10">
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 sm:mb-10">
-          <div className="mb-4 md:mb-0">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
-              Featured Certifications
+    <section id='certificates' className='py-24 md:py-32 overflow-hidden'>
+      <div className='max-w-6xl mx-auto px-6'>
+        {/* Header */}
+        <div className='flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14'>
+          <div>
+            <p className={cn(typography.overline, 'mb-3 text-primary')}>
+              Credentials
+            </p>
+            <h2 className={cn(typography.h1, 'text-foreground')}>
+              Certifications
             </h2>
-            <p className=" text-xs sm:text-base mt-1 sm:mt-2 text-gray-600 dark:text-gray-300">
-              A glimpse into my verified professional qualifications.
+            <div className='mt-4 w-12 h-0.5 bg-primary rounded-full' />
+            <p className={cn(typography.body, 'mt-4 max-w-md')}>
+              Verified professional qualifications from recognized programs.
             </p>
           </div>
           <Link
-            href="/certificates"
-            className="inline-flex items-center gap-2 font-semibold text-gray-900 dark:text-white hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors group flex-shrink-0"
+            href='/certificates'
+            className={cn(
+              typography.button,
+              'inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-200 flex-shrink-0 group',
+            )}
           >
-            View all certificates
-            <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+            All certificates
+            <ArrowRight className='w-4 h-4 transition-transform duration-200 group-hover:translate-x-1' />
           </Link>
         </div>
       </div>
 
-      <div className="w-full">
+      {/* Carousel */}
+      <div className='w-full'>
         <MotionCarousel
-          className="container mx-auto px-4"
-          itemClassName="flex-shrink-0 w-80 md:w-96"
+          className='max-w-6xl mx-auto px-6'
+          itemClassName='flex-shrink-0 w-72 md:w-80'
         >
           {featuredCertificates.map((cert) => (
             <FeaturedCertificateCard key={cert.title} certificate={cert} />
@@ -44,6 +52,4 @@ const CertificatesSection = () => {
       </div>
     </section>
   );
-};
-
-export default CertificatesSection;
+}
