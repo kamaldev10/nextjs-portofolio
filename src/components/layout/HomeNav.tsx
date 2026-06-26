@@ -8,11 +8,12 @@ import { cn } from '@/lib/utils';
 import { typography } from '@/lib/typography';
 
 const navLinks = [
-  { label: 'Home', href: '/#home' },
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/#about' },
   { label: 'Skills', href: '/#skills' },
   { label: 'Projects', href: '/#projects' },
   { label: 'Certificates', href: '/#certificates' },
+  { label: 'Documentations', href: '/#gallery' },
 ];
 
 export default function HomeNav() {
