@@ -6,10 +6,11 @@ export default function ProjectsListPage() {
     <section className='container mx-auto max-w-7xl px-4 py-12 md:py-16'>
       <header className='text-center mb-8 md:mb-12'>
         <h1 className='text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-2 md:mb-4'>
-          Projects Portfolio
+          All of My Projects
         </h1>
         <p className='text-base md:text-xl text-gray-700 dark:text-gray-300'>
-          Collections of my latest works and projects.
+          A collection of my work — ranging from production apps to experimental
+          builds.
         </p>
       </header>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8'>
