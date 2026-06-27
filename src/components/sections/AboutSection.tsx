@@ -55,7 +55,7 @@ export default function AboutSection() {
           </div>
 
           {/* Text content */}
-          <div className='md:col-span-3 space-y-6'>
+          <div className='md:col-span-3 space-y-6 text-justify'>
             <p className={cn(typography.bodyLg)}>
               I&apos;m a{' '}
               <strong className='text-foreground font-semibold'>
