@@ -7,8 +7,12 @@ import React, {
   useRef,
   useState,
 } from 'react';
-
 import { gsap } from 'gsap';
+
+// ── SSR-safe useLayoutEffect ───────────────────────────────────────────────
+// useLayoutEffect throws a warning on the server; use useEffect there instead
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 // ── Hooks ──────────────────────────────────────────────────────────────────
 
@@ -17,18 +21,28 @@ const useMedia = (
   values: number[],
   defaultValue: number,
 ): number => {
-  const get = () =>
-    values[queries.findIndex((q) => matchMedia(q).matches)] ?? defaultValue;
-
-  const [value, setValue] = useState<number>(get);
+  const [value, setValue] = useState<number>(defaultValue);
 
   useEffect(() => {
-    const handler = () => setValue(get);
-    queries.forEach((q) => matchMedia(q).addEventListener('change', handler));
-    return () =>
-      queries.forEach((q) =>
-        matchMedia(q).removeEventListener('change', handler),
+    const get = () =>
+      values[queries.findIndex((q) => window.matchMedia(q).matches)] ??
+      defaultValue;
+
+    setValue(get());
+
+    // Listen for breakpoint changes
+    const handlers = queries.map((q) => {
+      const mql = window.matchMedia(q);
+      const handler = () => setValue(get());
+      mql.addEventListener('change', handler);
+      return { mql, handler };
+    });
+
+    return () => {
+      handlers.forEach(({ mql, handler }) =>
+        mql.removeEventListener('change', handler),
       );
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,7 +53,7 @@ const useMeasure = <T extends HTMLElement>() => {
   const ref = useRef<T | null>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!ref.current) return;
     const ro = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
@@ -71,11 +85,10 @@ export interface MasonryItem {
   id: string;
   img: string;
   url?: string;
-  /** Intrinsic width of the image in px — used to compute aspect ratio */
+  /** Intrinsic image width in px — used to compute aspect ratio */
   intrinsicWidth: number;
-  /** Intrinsic height of the image in px — used to compute aspect ratio */
+  /** Intrinsic image height in px — used to compute aspect ratio */
   intrinsicHeight: number;
-  /** Optional caption shown on hover */
   caption?: string;
 }
 
@@ -131,7 +144,7 @@ const Masonry: React.FC<MasonryProps> = ({
     preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
   }, [items]);
 
-  // ── Grid calculation ──────────────────────────────────────────────────
+  // ── Grid calculation ───────────────────────────────────────────────────
   const grid = useMemo<GridItem[]>(() => {
     if (!width) return [];
 
@@ -140,11 +153,9 @@ const Masonry: React.FC<MasonryProps> = ({
     const colHeights = new Array<number>(columns).fill(0);
 
     return items.map((child) => {
-      // Aspect ratio from intrinsic dimensions
       const aspectRatio = child.intrinsicWidth / child.intrinsicHeight;
       const itemHeight = Math.round(columnWidth / aspectRatio);
 
-      // Place in shortest column
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = col * (columnWidth + gap);
       const y = colHeights[col];
@@ -160,7 +171,7 @@ const Masonry: React.FC<MasonryProps> = ({
     return Math.max(...grid.map((item) => item.y + item.h));
   }, [grid]);
 
-  // ── Initial position for entrance animation ───────────────────────────
+  // ── Entrance animation ─────────────────────────────────────────────────
   const getInitialPosition = (item: GridItem) => {
     let direction = animateFrom;
     if (animateFrom === 'random') {
@@ -185,7 +196,7 @@ const Masonry: React.FC<MasonryProps> = ({
 
   const hasMounted = useRef(false);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!imagesReady || !grid.length) return;
 
     grid.forEach((item, index) => {
@@ -214,28 +225,21 @@ const Masonry: React.FC<MasonryProps> = ({
           },
         );
       } else {
-        gsap.to(selector, {
-          ...animProps,
-          duration,
-          ease,
-          overwrite: 'auto',
-        });
+        gsap.to(selector, { ...animProps, duration, ease, overwrite: 'auto' });
       }
     });
 
     hasMounted.current = true;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [grid, imagesReady]);
 
-  // ── Hover handlers ────────────────────────────────────────────────────
+  // ── Hover handlers ─────────────────────────────────────────────────────
   const handleMouseEnter = (id: string, el: HTMLElement) => {
-    if (scaleOnHover) {
+    if (scaleOnHover)
       gsap.to(`[data-masonry-key="${id}"]`, {
         scale: hoverScale,
         duration: 0.3,
         ease: 'power2.out',
       });
-    }
     if (colorShiftOnHover) {
       const overlay = el.querySelector('.color-overlay') as HTMLElement | null;
       if (overlay) gsap.to(overlay, { opacity: 0.35, duration: 0.3 });
@@ -243,20 +247,19 @@ const Masonry: React.FC<MasonryProps> = ({
   };
 
   const handleMouseLeave = (id: string, el: HTMLElement) => {
-    if (scaleOnHover) {
+    if (scaleOnHover)
       gsap.to(`[data-masonry-key="${id}"]`, {
         scale: 1,
         duration: 0.3,
         ease: 'power2.out',
       });
-    }
     if (colorShiftOnHover) {
       const overlay = el.querySelector('.color-overlay') as HTMLElement | null;
       if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.3 });
     }
   };
 
-  // ── Render ────────────────────────────────────────────────────────────
+  // ── Render ─────────────────────────────────────────────────────────────
   return (
     <div
       ref={containerRef}
@@ -273,7 +276,6 @@ const Masonry: React.FC<MasonryProps> = ({
           className='absolute overflow-hidden rounded-xl cursor-pointer'
           style={{
             willChange: 'transform, width, height, opacity',
-            // Pre-position items before GSAP kicks in to prevent flash at (0,0)
             left: 0,
             top: 0,
           }}
@@ -285,24 +287,19 @@ const Masonry: React.FC<MasonryProps> = ({
           onMouseEnter={(e) => handleMouseEnter(item.id, e.currentTarget)}
           onMouseLeave={(e) => handleMouseLeave(item.id, e.currentTarget)}
         >
-          {/* Image — use <img> for natural sizing, not background-image */}
           <img
             src={item.img}
             alt={item.caption ?? `Gallery item ${item.id}`}
             className='w-full h-full object-cover block select-none'
             draggable={false}
           />
-
-          {/* Caption overlay */}
           {item.caption && (
-            <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none'>
+            <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-3 pointer-events-none'>
               <p className='text-white text-xs font-medium truncate'>
                 {item.caption}
               </p>
             </div>
           )}
-
-          {/* Optional color shift overlay */}
           {colorShiftOnHover && (
             <div className='color-overlay absolute inset-0 bg-gradient-to-tr from-indigo-500/40 to-sky-500/40 opacity-0 pointer-events-none' />
           )}
