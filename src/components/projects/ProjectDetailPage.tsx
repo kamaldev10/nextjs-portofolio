@@ -1,190 +1,219 @@
-// 📁 components/project/ProjectDetailPage.tsx
-"use client";
+'use client';
 
-import { ExternalLink, Github } from "lucide-react";
-import { FaArrowLeft } from "react-icons/fa";
-import Image from "next/image";
-import Link from "next/link";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import GallerySlider from "@/components/ui/GallerySlider";
-import type { Project } from "@/lib/data/projects-data";
-import ImageZoomModal from "@/components/ui/ImageZoomModal";
-import { useState } from "react";
+// components/projects/ProjectDetailPage.tsx
+import {
+  ExternalLink,
+  Github,
+  ArrowLeft,
+  Calendar,
+  Briefcase,
+  Tag,
+} from 'lucide-react';
+import Link from 'next/link';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import GallerySlider from '@/components/GallerySlider';
+import type { Project } from '@/lib/data/projects-data';
+import { cn } from '@/lib/utils';
+import { typography } from '@/lib/typography';
+
+const hasImages = (arr?: string[]) => arr && arr.length > 0 && arr[0] !== '';
 
 export default function ProjectDetailPage({ project }: { project: Project }) {
-  const [zoomOpen, setZoomOpen] = useState(false);
-  const [zoomSrc, setZoomSrc] = useState("");
+  const showGallery =
+    hasImages(project.mobileImages) || hasImages(project.desktopImages);
+
   return (
-    <div className="bg-white dark:bg-gray-800 shadow-xl p-6 md:p-12">
-      <Link
-        href="/projects"
-        className="inline-flex items-center dark:text-indigo-400 mb-6 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full px-3 py-3 transition-colors duration-300"
-      >
-        <FaArrowLeft className="me-2 sm:me-3" /> Back
-      </Link>
-
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-        {project.title}
-      </h1>
-      <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 text-justify">
-        {project.description}
-      </p>
-
-      {(project.mobileImage || project.desktopImage) && (
-        <Tabs
-          defaultValue={project.desktopImage ? "desktop" : "mobile"}
-          className="mb-10"
+    <div className='min-h-screen pt-10 pb-10'>
+      <div className='max-w-6xl mx-auto px-6'>
+        {/* ── Back link ──────────────────────────────────────────── */}
+        <Link
+          href='/projects'
+          className={cn(
+            typography.button,
+            'inline-flex items-center gap-2 mb-10',
+            'text-muted-foreground hover:text-foreground',
+            'transition-colors duration-200 group',
+          )}
         >
-          <TabsList className="flex space-x-2">
-            {project.mobileImage && (
-              <TabsTrigger value="mobile">📱 Mobile View</TabsTrigger>
-            )}
-            {project.desktopImage && (
-              <TabsTrigger value="desktop">🖥️ Desktop View</TabsTrigger>
-            )}
-          </TabsList>
+          <ArrowLeft className='w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1' />
+          All Projects
+        </Link>
 
-          {project.desktopImage && (
-            <TabsContent value="desktop">
-              <div className="relative w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] rounded-lg overflow-hidden my-4">
-                <Image
-                  onClick={() => {
-                    setZoomSrc(project.desktopImage!);
-                    setZoomOpen(true);
-                  }}
-                  src={project.desktopImage}
-                  alt={`${project.title} - Desktop`}
-                  fill
-                  className="object-cover"
-                  loading="eager"
-                />
+        {/* ── Two-column layout ──────────────────────────────────── */}
+        <div className='grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-14 items-start'>
+          {/* ── Main column ──────────────────────────────────────── */}
+          <div className='min-w-0'>
+            {/* Title + short description */}
+            <div className='mb-8 pb-8 border-b border-border'>
+              <p className={cn(typography.overline, 'mb-3 text-primary')}>
+                {project.year ?? 'Project'}
+              </p>
+              <h1 className={cn(typography.h1, 'text-foreground mb-4')}>
+                {project.title}
+              </h1>
+              <p className={cn(typography.bodyLg, 'text-muted-foreground')}>
+                {project.description}
+              </p>
+            </div>
+
+            {/* Gallery */}
+            {showGallery && (
+              <div className='mb-10'>
+                <Tabs
+                  defaultValue={
+                    hasImages(project.desktopImages) ? 'desktop' : 'mobile'
+                  }
+                >
+                  <TabsList className='mb-5 bg-muted/60 border border-border'>
+                    {hasImages(project.desktopImages) && (
+                      <TabsTrigger value='desktop' className='gap-1.5'>
+                        <span className='text-base leading-none'>🖥️</span>
+                        Desktop
+                      </TabsTrigger>
+                    )}
+                    {hasImages(project.mobileImages) && (
+                      <TabsTrigger value='mobile' className='gap-1.5'>
+                        <span className='text-base leading-none'>📱</span>
+                        Mobile
+                      </TabsTrigger>
+                    )}
+                  </TabsList>
+
+                  {hasImages(project.desktopImages) && (
+                    <TabsContent value='desktop'>
+                      <GallerySlider
+                        images={project.desktopImages}
+                        type='desktop'
+                      />
+                    </TabsContent>
+                  )}
+                  {hasImages(project.mobileImages) && (
+                    <TabsContent value='mobile'>
+                      <GallerySlider
+                        images={project.mobileImages}
+                        type='mobile'
+                      />
+                    </TabsContent>
+                  )}
+                </Tabs>
               </div>
-            </TabsContent>
-          )}
+            )}
 
-          {project.mobileImage && (
-            <TabsContent value="mobile">
-              <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-lg overflow-hidden my-4">
-                <Image
-                  onClick={() => {
-                    setZoomSrc(project.mobileImage!);
-                    setZoomOpen(true);
-                  }}
-                  src={project.mobileImage}
-                  alt={`${project.title} - Mobile`}
-                  fill
-                  className="object-contain cursor-zoom-in"
-                />
+            {/* Long description */}
+            <div>
+              <h2 className={cn(typography.h2, 'text-foreground mb-6')}>
+                About this project
+              </h2>
+              <div className='space-y-5'>
+                {project.longDescription.map((para, i) => (
+                  <p key={i} className={cn(typography.body)}>
+                    {para}
+                  </p>
+                ))}
               </div>
-            </TabsContent>
-          )}
-        </Tabs>
-      )}
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <div className="md:col-span-2">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Description
-          </h2>
-          <div className="text-sm md:text-lg text-gray-700 dark:text-gray-300 space-y-4 text-justify">
-            {project.longDescription.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+            </div>
           </div>
-        </div>
-        <div className="md:col-span-1 bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-inner">
-          <h2 className="text-2xl font-bold mb-4">Details</h2>
-          <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
-            {project.role && (
-              <li>
-                <strong>Role :</strong> {project.role}
-              </li>
-            )}
-            {project.year && (
-              <li>
-                <strong>Year :</strong> {project.year}
-              </li>
-            )}
-            {project.tags && (
-              <li>
-                <strong>Tech :</strong>
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {project.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-accent text-gray-800 text-xs rounded-md dark:bg-blue-800 dark:text-blue-100"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+
+          {/* ── Sticky sidebar ───────────────────────────────────── */}
+          <aside className='lg:sticky lg:top-28 self-start space-y-4'>
+            {/* Details card */}
+            <div className='rounded-xl border border-border bg-card/60 backdrop-blur-sm p-5 space-y-5'>
+              <h3 className={cn(typography.h4, 'text-foreground')}>
+                Project Details
+              </h3>
+
+              <div className='h-px bg-border' />
+
+              {/* Role */}
+              {project.role && (
+                <div className='flex items-start gap-3'>
+                  <Briefcase className='w-4 h-4 mt-0.5 text-primary flex-shrink-0' />
+                  <div>
+                    <p className={cn(typography.caption, 'mb-0.5')}>Role</p>
+                    <p className='text-sm text-foreground font-medium'>
+                      {project.role}
+                    </p>
+                  </div>
                 </div>
-              </li>
-            )}
-          </ul>
+              )}
 
-          <div className="mt-6 space-y-4">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                className="flex items-center justify-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 transition"
-              >
-                <ExternalLink className="mr-2 h-4 w-4" />
-                See Demo
-              </a>
-            )}
-            {project.repoUrl && (
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                className="flex items-center justify-center px-4 py-2 border border-gray-400 rounded-md text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 transition"
-              >
-                <Github className="mr-2 h-4 w-4" />
-                GitHub Repo
-              </a>
-            )}
-          </div>
+              {/* Year */}
+              {project.year && (
+                <div className='flex items-start gap-3'>
+                  <Calendar className='w-4 h-4 mt-0.5 text-primary flex-shrink-0' />
+                  <div>
+                    <p className={cn(typography.caption, 'mb-0.5')}>Year</p>
+                    <p className='text-sm text-foreground font-medium'>
+                      {project.year}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Tech tags */}
+              {project.tags?.length > 0 && (
+                <div className='flex items-start gap-3'>
+                  <Tag className='w-4 h-4 mt-0.5 text-primary flex-shrink-0' />
+                  <div className='min-w-0'>
+                    <p className={cn(typography.caption, 'mb-2')}>Tech Stack</p>
+                    <div className='flex flex-wrap gap-1.5'>
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className={cn(
+                            typography.badge,
+                            'px-2.5 py-1 rounded-md',
+                            'bg-primary/10 text-primary border border-primary/20',
+                          )}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* CTA buttons */}
+            <div className='space-y-2.5'>
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={cn(
+                    typography.button,
+                    'flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-md',
+                    'bg-primary text-primary-foreground hover:bg-primary/90',
+                    'transition-colors duration-200',
+                  )}
+                >
+                  <ExternalLink className='w-4 h-4' />
+                  Live Demo
+                </a>
+              )}
+              {project.repoUrl && (
+                <a
+                  href={project.repoUrl}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={cn(
+                    typography.button,
+                    'flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-md',
+                    'border border-border text-foreground',
+                    'hover:bg-muted/50 hover:border-primary/40',
+                    'transition-all duration-200',
+                  )}
+                >
+                  <Github className='w-4 h-4' />
+                  GitHub Repo
+                </a>
+              )}
+            </div>
+          </aside>
         </div>
       </div>
-
-      {/* Galeri Slider */}
-      {(project.mobileImages?.length || project.desktopImages?.length) && (
-        <Tabs
-          defaultValue={project.mobileImages?.length ? "desktop" : "mobile"}
-          className="mt-12"
-        >
-          <TabsList className="mb-4">
-            {project.desktopImages?.length > 0 &&
-              project.desktopImages[0] !== "" && (
-                <TabsTrigger value="desktop">🖥️ Desktop Gallery</TabsTrigger>
-              )}
-            {project.mobileImages?.length > 0 &&
-              project.mobileImages[0] !== "" && (
-                <TabsTrigger value="mobile">📱 Mobile Gallery</TabsTrigger>
-              )}
-          </TabsList>
-
-          {project.mobileImages?.length > 0 &&
-            project.mobileImages[0] !== "" && (
-              <TabsContent value="mobile">
-                <GallerySlider images={project.mobileImages} type="mobile" />
-              </TabsContent>
-            )}
-
-          {project.desktopImages?.length > 0 &&
-            project.desktopImages[0] !== "" && (
-              <TabsContent value="desktop">
-                <GallerySlider images={project.desktopImages} type="desktop" />
-              </TabsContent>
-            )}
-        </Tabs>
-      )}
-
-      <ImageZoomModal
-        isOpen={zoomOpen}
-        onClose={() => setZoomOpen(false)}
-        src={zoomSrc}
-      />
     </div>
   );
 }
