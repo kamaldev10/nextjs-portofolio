@@ -1,7 +1,7 @@
 // components/sections/AboutSection.tsx
 import { cn } from '@/lib/utils';
 import { typography } from '@/lib/typography';
-import ProfileCard from '../profile-card/ProfileCard';
+import ProfileCard from '../profile/ProfileCard';
 
 const coreTech = [
   'MERN Stack & Next.js',
