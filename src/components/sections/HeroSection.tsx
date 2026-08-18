@@ -1,14 +1,14 @@
 'use client';
 
 // components/sections/HeroSection.tsx
-import Link from 'next/link';
-import { Github, ArrowRight, Mail } from 'lucide-react';
-import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
-import { cn } from '@/lib/utils';
-import { typography } from '@/lib/typography';
 import SideRays from '@/components/SideRays';
-import { IoFingerPrint } from 'react-icons/io5';
+import { typography } from '@/lib/typography';
+import { cn } from '@/lib/utils';
+import { ArrowRight, Github, Mail } from 'lucide-react';
+import Link from 'next/link';
+import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { GiArtificialIntelligence } from 'react-icons/gi';
+import { IoFingerPrint } from 'react-icons/io5';
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/kamaldev10', icon: Github },

@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Certifications | Ali Musthafa Kamal Portofolio',
   description:
     'A comprehensive list of my professional certifications and qualifications.',
+  alternates: {
+    canonical: '/certificates',
+  },
 };
 
 const CertificatesPage = () => {

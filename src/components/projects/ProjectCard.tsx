@@ -79,8 +79,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           'relative px-4 py-4 bg-card',
           'md:absolute md:inset-x-0 md:bottom-0 md:bg-transparent md:px-5 md:pb-5 md:pt-10',
           'md:bg-gradient-to-t md:from-black/90 md:via-black/60 md:to-transparent',
-          'md:translate-y-3 md:opacity-0',
-          'md:group-hover:translate-y-0 md:group-hover:opacity-100',
+          'md:translate-y-0 md:opacity-100',
           'md:transition-all md:duration-350 md:ease-out',
         )}
       >

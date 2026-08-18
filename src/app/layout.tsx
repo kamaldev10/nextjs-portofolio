@@ -1,31 +1,31 @@
-import './globals.css';
-import type { Metadata } from 'next';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import Footer from '@/components/layout/Footer';
 import ConditionalNavbar from '@/components/layout/ConditionalNavbar';
+import Footer from '@/components/layout/Footer';
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Ali Musthafa Kamal | Fullstack Web Developer',
+  metadataBase: new URL('https://amkamal.web.id'),
+  alternates: {
+    canonical: '/',
+  },
+  title: 'Ali Musthafa Kamal | Software Engineer',
   description:
-    'Portfolio of Ali Musthafa Kamal - Translating complex ideas to high-performance and scalable web applications.',
+    'Portfolio of Ali Musthafa Kamal - Translating complex ideas to high-performance and scalable software applications.',
   keywords: [
     'Ali Musthafa Kamal',
+    'software engineer',
     'portfolio',
-    'web developer',
+    'software development',
     'fullstack developer',
-    'frontend developer',
-    'backend developer',
-    'Next.js',
-    'React',
-    'Tailwind CSS',
   ],
   authors: [{ name: 'Ali Musthafa Kamal' }],
   creator: 'Ali Musthafa Kamal',
   openGraph: {
-    title: 'Ali Musthafa Kamal | Fullstack Web Developer',
+    title: 'Ali Musthafa Kamal | Software Engineer',
     description:
-      'Showcasing projects and skills in frontend and backend web development using Next.js, React, Tailwind CSS, etc.',
-    url: 'https://kamaldev.web.id',
+      'Showcasing projects and skills in software development using React, Next.js, Node.js, Express, Golang, Laravel, etc.',
+    url: 'https://amkamal.web.id',
     siteName: 'Ali Musthafa Kamal Portfolio',
     images: [
       {

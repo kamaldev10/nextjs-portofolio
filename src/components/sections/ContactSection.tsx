@@ -1,12 +1,12 @@
 'use client';
 
 // components/sections/ContactSection.tsx
-import { useState } from 'react';
-import { cn } from '@/lib/utils';
 import { typography } from '@/lib/typography';
-import { Send, MapPin, Github } from 'lucide-react';
-import { FaLinkedinIn } from 'react-icons/fa';
+import { cn } from '@/lib/utils';
+import { Github, MapPin, Send } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
+import { FaLinkedinIn } from 'react-icons/fa';
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 

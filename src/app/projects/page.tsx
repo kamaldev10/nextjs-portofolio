@@ -1,5 +1,15 @@
+import type { Metadata } from 'next';
 import ProjectCard from '@/components/projects/ProjectCard';
 import { projects } from '@/lib/data/projects-data';
+
+export const metadata: Metadata = {
+  title: 'All Projects | Ali Musthafa Kamal',
+  description:
+    'A collection of my work — ranging from production apps to experimental builds.',
+  alternates: {
+    canonical: '/projects',
+  },
+};
 
 export default function ProjectsListPage() {
   return (
